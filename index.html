@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JM Services Trans | Taxi Kolwezi - Réservation en ligne 24/7</title>
-    <meta name="description" content="Commandez votre taxi à Kolwezi en quelques clics. Service 24h/24, 7j/7. Transfert aéroport, courses urbaines, voyages interurbains. Chauffeurs professionnels.">
+    <meta name="description" content="Commandez votre taxi à Kolwezi en quelques clics. Service 24h/24, 7j/7. Transfert aéroport, courses urbaines, voyages interurbains.">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -23,12 +18,16 @@
             theme: {
                 extend: {
                     colors: {
-                        jaune: '#FFD100',
-                        jauneDark: '#E6BC00',
-                        noir: '#1A1A1A',
-                        noirLight: '#2D2D2D',
-                        gris: '#F5F5F5',
-                        grisDark: '#E0E0E0',
+                        blanc: '#FFFFFF',
+                        blancCasse: '#F8FAFC',
+                        ciel: '#38BDF8',
+                        cielDark: '#0EA5E9',
+                        cielLight: '#7DD3FC',
+                        cielSoft: '#E0F2FE',
+                        noir: '#0F172A',
+                        noirSoft: '#1E293B',
+                        gris: '#64748B',
+                        grisLight: '#E2E8F0',
                         whatsapp: '#25D366',
                     },
                     fontFamily: {
@@ -43,46 +42,48 @@
     <style>
         * { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
-        body { background-color: #ffffff; color: #1A1A1A; }
+        body { background-color: #F8FAFC; color: #0F172A; }
         
         .card { 
-            background-color: #ffffff; 
-            border: 1px solid #E5E5E5; 
+            background-color: #FFFFFF; 
+            border: 1px solid #E2E8F0; 
             border-radius: 16px; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
             transition: all 0.3s ease;
         }
         .card:hover { 
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 10px 40px rgba(56, 189, 248, 0.15); 
             transform: translateY(-2px);
+            border-color: #7DD3FC;
         }
         
-        .btn-jaune { 
-            background-color: #FFD100; 
-            color: #1A1A1A; 
+        .btn-ciel { 
+            background: linear-gradient(135deg, #38BDF8 0%, #7DD3FC 100%);
+            color: #FFFFFF; 
             font-weight: 700; 
             transition: all 0.3s ease; 
             border-radius: 12px;
             font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
         }
-        .btn-jaune:hover { 
-            background-color: #E6BC00; 
+        .btn-ciel:hover { 
+            background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);
             transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(255, 209, 0, 0.4); 
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5); 
         }
         
         .btn-noir { 
-            background-color: #1A1A1A; 
-            color: #FFD100; 
+            background-color: #0F172A; 
+            color: #FFFFFF; 
             font-weight: 700; 
             transition: all 0.3s ease; 
             border-radius: 12px;
             font-family: 'Poppins', sans-serif;
         }
         .btn-noir:hover { 
-            background-color: #2D2D2D; 
+            background-color: #1E293B; 
             transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); 
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3); 
         }
         
         .btn-whatsapp {
@@ -95,6 +96,7 @@
         .btn-whatsapp:hover {
             background-color: #1DA851;
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
         }
         
         .hidden-section { display: none; }
@@ -102,7 +104,7 @@
         .nav-btn { 
             position: relative; 
             padding: 8px 16px; 
-            color: #4B5563; 
+            color: #64748B; 
             transition: all 0.3s ease; 
             font-size: 0.95rem; 
             font-weight: 600; 
@@ -111,16 +113,16 @@
             border: none;
             border-radius: 8px;
         }
-        .nav-btn:hover { color: #1A1A1A; background-color: #F5F5F5; }
-        .nav-btn.active { color: #1A1A1A; background-color: #FFD100; }
+        .nav-btn:hover { color: #0F172A; background-color: #E0F2FE; }
+        .nav-btn.active { color: #FFFFFF; background: linear-gradient(135deg, #38BDF8, #0EA5E9); }
         
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
         input, select, textarea { 
-            background-color: #F9FAFB; 
-            border: 2px solid #E5E7EB; 
-            color: #1A1A1A; 
+            background-color: #FFFFFF; 
+            border: 2px solid #E2E8F0; 
+            color: #0F172A; 
             border-radius: 12px; 
             padding: 14px 16px; 
             width: 100%; 
@@ -130,23 +132,20 @@
             font-family: 'Inter', sans-serif;
         }
         input:focus, select:focus, textarea:focus { 
-            border-color: #FFD100; 
+            border-color: #38BDF8; 
             background-color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(255, 209, 0, 0.15);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
         }
-        input::placeholder, textarea::placeholder { color: #9CA3AF; }
+        input::placeholder, textarea::placeholder { color: #94A3B8; }
 
         .hero-bg {
-            background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
             position: relative;
         }
         .hero-bg::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -166,7 +165,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background-color: #FFD100;
+            background: linear-gradient(90deg, #38BDF8, #7DD3FC);
             border-radius: 2px;
         }
         .section-title.center::after {
@@ -179,28 +178,28 @@
             overflow: hidden;
         }
         .pricing-card.featured {
-            border: 2px solid #FFD100;
-            box-shadow: 0 10px 40px rgba(255, 209, 0, 0.2);
+            border: 2px solid #38BDF8;
+            box-shadow: 0 10px 40px rgba(56, 189, 248, 0.2);
         }
 
         .step-circle {
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background-color: #FFD100;
-            color: #1A1A1A;
+            background: linear-gradient(135deg, #38BDF8 0%, #7DD3FC 100%);
+            color: #FFFFFF;
             font-weight: 900;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             font-family: 'Poppins', sans-serif;
-            box-shadow: 0 6px 20px rgba(255, 209, 0, 0.4);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
         }
 
-        .badge-jaune {
-            background-color: #FFD100;
-            color: #1A1A1A;
+        .badge-ciel {
+            background: linear-gradient(135deg, #38BDF8, #7DD3FC);
+            color: #FFFFFF;
             padding: 6px 16px;
             border-radius: 999px;
             font-size: 0.8rem;
@@ -209,10 +208,9 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* ===== CHAUFFEURS ===== */
         .driver-card {
-            background: #ffffff;
-            border: 1px solid #E5E5E5;
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
             border-radius: 20px;
             padding: 28px 20px;
             text-align: center;
@@ -221,16 +219,16 @@
             overflow: hidden;
         }
         .driver-card:hover {
-            border-color: #FFD100;
+            border-color: #38BDF8;
             transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(255, 209, 0, 0.2);
+            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
         }
         .driver-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 90px;
-            background: linear-gradient(135deg, #FFD100 0%, #FFE55C 100%);
+            background: linear-gradient(135deg, #38BDF8 0%, #7DD3FC 100%);
             z-index: 0;
         }
         .driver-photo-wrapper {
@@ -265,7 +263,7 @@
             animation: pulse-status 2s infinite;
         }
         .driver-status.offline { 
-            background: #9CA3AF; 
+            background: #94A3B8; 
             box-shadow: none; 
             animation: none; 
         }
@@ -276,7 +274,7 @@
         .driver-name {
             font-size: 1.15rem;
             font-weight: 800;
-            color: #1A1A1A;
+            color: #0F172A;
             margin-bottom: 4px;
             font-family: 'Poppins', sans-serif;
             position: relative;
@@ -284,8 +282,8 @@
         }
         .driver-role {
             display: inline-block;
-            background: #1A1A1A;
-            color: #FFD100;
+            background: #0F172A;
+            color: #FFFFFF;
             font-size: 0.7rem;
             padding: 4px 14px;
             border-radius: 999px;
@@ -297,7 +295,7 @@
         }
         .driver-info {
             font-size: 0.82rem;
-            color: #4B5563;
+            color: #475569;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -306,8 +304,8 @@
             font-weight: 500;
         }
         .driver-info i { 
-            color: #1A1A1A; 
-            background: #FFD100;
+            color: #FFFFFF; 
+            background: linear-gradient(135deg, #38BDF8, #0EA5E9);
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -318,19 +316,19 @@
             flex-shrink: 0;
         }
         .driver-info a {
-            color: #1A1A1A;
+            color: #0F172A;
             font-weight: 700;
             text-decoration: none;
             transition: color 0.2s;
         }
-        .driver-info a:hover { color: #E6BC00; }
+        .driver-info a:hover { color: #38BDF8; }
         .driver-rating {
             display: flex;
             justify-content: center;
             gap: 3px;
             margin: 14px 0 16px;
             font-size: 0.85rem;
-            color: #FFD100;
+            color: #FBBF24;
         }
         .driver-actions {
             display: flex;
@@ -339,8 +337,8 @@
         }
         .driver-btn-call {
             flex: 1;
-            background-color: #1A1A1A;
-            color: #FFD100;
+            background-color: #0F172A;
+            color: #FFFFFF;
             font-weight: 700;
             font-size: 0.78rem;
             padding: 12px 8px;
@@ -354,7 +352,7 @@
             font-family: 'Poppins', sans-serif;
         }
         .driver-btn-call:hover {
-            background-color: #2D2D2D;
+            background-color: #1E293B;
             transform: translateY(-2px);
         }
         .driver-btn-wa {
@@ -379,32 +377,32 @@
         }
 
         .zone-item {
-            background: #F9FAFB;
-            border: 1px solid #E5E7EB;
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
             padding: 14px;
             text-align: center;
             transition: all 0.3s ease;
         }
         .zone-item:hover {
-            background: #FFD100;
-            border-color: #FFD100;
+            background: linear-gradient(135deg, #38BDF8, #7DD3FC);
+            border-color: #38BDF8;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 209, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
         }
         .zone-item:hover i,
-        .zone-item:hover p { color: #1A1A1A; }
+        .zone-item:hover p { color: #FFFFFF; }
 
         .testimonial-card {
-            background: #F9FAFB;
-            border: 1px solid #E5E7EB;
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
             border-radius: 16px;
             padding: 24px;
             transition: all 0.3s ease;
         }
         .testimonial-card:hover {
-            border-color: #FFD100;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-color: #38BDF8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
         }
 
         .chat-widget {
@@ -416,8 +414,8 @@
             max-width: calc(100vw - 48px);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border: 1px solid #E5E7EB;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.3);
+            border: 1px solid #E2E8F0;
             transform: translateY(20px);
             opacity: 0;
             pointer-events: none;
@@ -458,8 +456,8 @@
         }
 
         .top-bar {
-            background: #1A1A1A;
-            color: #FFD100;
+            background: #0F172A;
+            color: #7DD3FC;
         }
 
         .stat-item {
@@ -469,17 +467,31 @@
         .stat-item .number {
             font-size: 2.5rem;
             font-weight: 900;
-            color: #FFD100;
+            color: #FFFFFF;
             font-family: 'Poppins', sans-serif;
             line-height: 1;
         }
         .stat-item .label {
             font-size: 0.8rem;
-            color: #9CA3AF;
+            color: #0F172A;
             margin-top: 8px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+
+        .loader {
+            border: 3px solid #E0F2FE;
+            border-top: 3px solid #38BDF8;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @media (max-width: 640px) {
@@ -497,25 +509,22 @@
             <span class="hidden sm:inline"><i class="fas fa-clock mr-1"></i> Service disponible 24h/24 - 7j/7</span>
             <span class="sm:hidden"><i class="fas fa-clock mr-1"></i> 24/7</span>
         </div>
-        <div class="flex items-center gap-4">
-            <a href="tel:+243990840088" class="hover:underline transition font-bold">
-                <i class="fas fa-phone mr-1"></i> +243 990 840 088
-            </a>
-        </div>
+        <a href="tel:+243990840088" class="hover:underline transition font-bold">
+            <i class="fas fa-phone mr-1"></i> +243 990 840 088
+        </a>
     </div>
 
-    <!-- ===== HEADER / NAVIGATION ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="px-5 py-4 flex justify-between items-center border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
         <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('accueil', null)">
-            <div class="w-12 h-12 rounded-xl bg-jaune flex items-center justify-center text-noir font-black text-xl shadow-lg">JM</div>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center text-white font-black text-xl shadow-lg shadow-ciel/30">JM</div>
             <div>
-                <h1 class="text-xl font-black tracking-tight text-noir" style="font-family: 'Poppins', sans-serif;">JM Services Trans</h1>
-                <p class="text-[10px] text-gray-500 tracking-widest uppercase font-semibold">Taxi Kolwezi • 24/7</p>
+                <h1 class="text-xl font-black tracking-tight text-noir">JM Services Trans</h1>
+                <p class="text-[10px] text-gris tracking-widest uppercase font-semibold">Taxi Kolwezi • 24/7</p>
             </div>
         </div>
         
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex gap-2 text-sm items-center">
+        <nav class="hidden lg:flex gap-1 text-sm items-center">
             <button onclick="showSection('accueil', this)" data-section="accueil" class="nav-btn active">Accueil</button>
             <button onclick="showSection('services', this)" data-section="services" class="nav-btn">Tarifs</button>
             <button onclick="showSection('chauffeurs', this)" data-section="chauffeurs" class="nav-btn">Chauffeurs</button>
@@ -523,18 +532,17 @@
             <button onclick="showSection('apropos', this)" data-section="apropos" class="nav-btn">À propos</button>
             <button onclick="showSection('contact', this)" data-section="contact" class="nav-btn">Contact</button>
             <button onclick="showSection('admin', this)" data-section="admin" class="nav-btn"><i class="fas fa-lock text-xs mr-1"></i>Admin</button>
-            <button onclick="showSection('reserver', this)" data-section="reserver" class="btn-jaune px-5 py-2.5 text-sm flex items-center gap-2 ml-2">
+            <button onclick="showSection('reserver', this)" data-section="reserver" class="btn-ciel px-5 py-2.5 text-sm flex items-center gap-2 ml-2">
                 <i class="fas fa-car"></i> Réserver
             </button>
         </nav>
 
-        <!-- Mobile menu button -->
         <button onclick="toggleMobileMenu()" class="lg:hidden text-2xl text-noir">
             <i class="fas fa-bars"></i>
         </button>
     </header>
 
-    <!-- ===== MOBILE NAVIGATION ===== -->
+    <!-- ===== MOBILE MENU ===== -->
     <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-gray-200 py-3 px-4">
         <div class="flex flex-col gap-2">
             <button onclick="showSection('accueil', this); toggleMobileMenu()" data-section="accueil" class="nav-btn active text-left">Accueil</button>
@@ -544,37 +552,34 @@
             <button onclick="showSection('apropos', this); toggleMobileMenu()" data-section="apropos" class="nav-btn text-left">À propos</button>
             <button onclick="showSection('contact', this); toggleMobileMenu()" data-section="contact" class="nav-btn text-left">Contact</button>
             <button onclick="showSection('admin', this); toggleMobileMenu()" data-section="admin" class="nav-btn text-left">Admin</button>
-            <button onclick="showSection('reserver', this); toggleMobileMenu()" class="btn-jaune py-2.5 mt-2">
+            <button onclick="showSection('reserver', this); toggleMobileMenu()" class="btn-ciel py-2.5 mt-2">
                 <i class="fas fa-car mr-2"></i> Réserver un taxi
             </button>
         </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
     <main class="flex-grow w-full">
 
         <!-- ========== SECTION ACCUEIL ========== -->
         <section id="accueil" class="section">
             
-            <!-- Hero Banner -->
             <div class="hero-bg py-16 md:py-24 px-5">
                 <div class="max-w-6xl mx-auto relative z-10">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                         
-                        <!-- Left: Text -->
                         <div class="text-white text-center lg:text-left">
-                            <span class="inline-block bg-jaune text-noir text-xs px-4 py-2 rounded-full uppercase tracking-widest font-bold mb-6">
+                            <span class="inline-block bg-gradient-to-r from-ciel to-cielLight text-white text-xs px-4 py-2 rounded-full uppercase tracking-widest font-bold mb-6">
                                 <i class="fas fa-star mr-1"></i> N°1 du taxi à Kolwezi
                             </span>
                             <h1 class="text-4xl md:text-6xl font-black mb-5 leading-tight">
-                                Votre taxi à <span class="text-jaune">Kolwezi</span> en quelques clics
+                                Votre taxi à <span class="text-cielLight">Kolwezi</span> en quelques clics
                             </h1>
                             <p class="text-gray-300 text-base md:text-lg mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
                                 Commandez votre taxi en 2 minutes. Chauffeurs professionnels, véhicules confortables, prix transparents.
                             </p>
                             
                             <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                                <button onclick="showSection('reserver', null)" class="btn-jaune px-8 py-4 text-base flex items-center justify-center gap-2">
+                                <button onclick="showSection('reserver', null)" class="btn-ciel px-8 py-4 text-base flex items-center justify-center gap-2">
                                     <i class="fas fa-car"></i> Réserver maintenant
                                 </button>
                                 <a href="tel:+243990840088" class="bg-white/10 backdrop-blur border border-white/20 text-white font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition flex items-center justify-center gap-2">
@@ -582,43 +587,41 @@
                                 </a>
                             </div>
 
-                            <!-- Trust indicators -->
                             <div class="flex flex-wrap gap-6 mt-8 text-sm text-gray-300 justify-center lg:justify-start">
-                                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-jaune"></i> Sans frais cachés</span>
-                                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-jaune"></i> Paiement à bord</span>
-                                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-jaune"></i> Chauffeurs vérifiés</span>
+                                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cielLight"></i> Sans frais cachés</span>
+                                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cielLight"></i> Paiement à bord</span>
+                                <span class="flex items-center gap-2"><i class="fas fa-check-circle text-cielLight"></i> Chauffeurs vérifiés</span>
                             </div>
                         </div>
 
-                        <!-- Right: Booking Form -->
                         <div class="card p-6 md:p-8 shadow-2xl">
-                            <h3 class="text-xl font-bold text-noir mb-1" style="font-family: 'Poppins', sans-serif;">Réservez votre taxi</h3>
-                            <p class="text-xs text-gray-500 mb-6">Réservation instantanée via WhatsApp</p>
+                            <h3 class="text-xl font-bold text-noir mb-1">Réservez votre taxi</h3>
+                            <p class="text-xs text-gris mb-6">Réservation instantanée via WhatsApp</p>
                             
                             <form id="quickBookingForm" class="space-y-4">
                                 <div>
-                                    <label class="block text-xs font-bold text-gray-700 mb-1.5">Départ</label>
+                                    <label class="block text-xs font-bold text-noirSoft mb-1.5">Départ</label>
                                     <input type="text" id="quickPickup" required placeholder="Ex: Hôtel Impala">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold text-gray-700 mb-1.5">Destination</label>
+                                    <label class="block text-xs font-bold text-noirSoft mb-1.5">Destination</label>
                                     <input type="text" id="quickDestination" required placeholder="Ex: Aéroport Kolwezi">
                                 </div>
                                 <div class="grid grid-cols-2 gap-3">
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Date</label>
+                                        <label class="block text-xs font-bold text-noirSoft mb-1.5">Date</label>
                                         <input type="date" id="quickDate">
                                     </div>
                                     <div>
-                                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Heure</label>
+                                        <label class="block text-xs font-bold text-noirSoft mb-1.5">Heure</label>
                                         <input type="time" id="quickTime">
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2 py-1">
-                                    <input type="checkbox" id="quickImmediate" class="w-4 h-4 accent-jaune rounded cursor-pointer">
-                                    <label for="quickImmediate" class="text-sm text-gray-600 cursor-pointer">Départ immédiat</label>
+                                    <input type="checkbox" id="quickImmediate" class="w-4 h-4 accent-ciel rounded cursor-pointer">
+                                    <label for="quickImmediate" class="text-sm text-gris cursor-pointer">Départ immédiat</label>
                                 </div>
-                                <button type="submit" class="btn-noir w-full py-4 text-sm flex items-center justify-center gap-2">
+                                <button type="submit" class="btn-ciel w-full py-4 text-sm flex items-center justify-center gap-2">
                                     <i class="fab fa-whatsapp text-lg"></i> Commander via WhatsApp
                                 </button>
                             </form>
@@ -627,100 +630,59 @@
                 </div>
             </div>
 
-            <!-- Stats Bar -->
-            <div class="bg-jaune py-8 px-5">
+            <div class="bg-gradient-to-r from-ciel to-cielLight py-8 px-5">
                 <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="stat-item">
-                        <div class="number" style="color: #1A1A1A;">500+</div>
-                        <div class="label" style="color: #1A1A1A;">Clients satisfaits</div>
+                        <div class="number" style="color: #FFFFFF;">500+</div>
+                        <div class="label" style="color: #FFFFFF;">Clients satisfaits</div>
                     </div>
                     <div class="stat-item">
-                        <div class="number" style="color: #1A1A1A;">24/7</div>
-                        <div class="label" style="color: #1A1A1A;">Disponibilité</div>
+                        <div class="number" style="color: #FFFFFF;">24/7</div>
+                        <div class="label" style="color: #FFFFFF;">Disponibilité</div>
                     </div>
                     <div class="stat-item">
-                        <div class="number" style="color: #1A1A1A;">15min</div>
-                        <div class="label" style="color: #1A1A1A;">Temps d'attente</div>
+                        <div class="number" style="color: #FFFFFF;">15min</div>
+                        <div class="label" style="color: #FFFFFF;">Temps d'attente</div>
                     </div>
                     <div class="stat-item">
-                        <div class="number" style="color: #1A1A1A;">100%</div>
-                        <div class="label" style="color: #1A1A1A;">Sécurité</div>
+                        <div class="number" style="color: #FFFFFF;">100%</div>
+                        <div class="label" style="color: #FFFFFF;">Sécurité</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Comment ça marche -->
             <div class="py-20 px-5 max-w-5xl mx-auto">
                 <div class="text-center mb-14">
                     <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Comment ça marche ?</h2>
-                    <p class="text-gray-500 text-base mt-8">Réservez votre taxi en 3 étapes simples</p>
+                    <p class="text-gris text-base mt-8">Réservez votre taxi en 3 étapes simples</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="text-center">
                         <div class="step-circle mx-auto mb-5">1</div>
-                        <h3 class="text-xl font-bold mb-3 text-noir" style="font-family: 'Poppins', sans-serif;">Remplissez le formulaire</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Indiquez votre point de départ, votre destination et l'heure souhaitée.</p>
+                        <h3 class="text-xl font-bold mb-3 text-noir">Remplissez le formulaire</h3>
+                        <p class="text-sm text-gris leading-relaxed">Indiquez votre point de départ, votre destination et l'heure souhaitée.</p>
                     </div>
                     <div class="text-center">
                         <div class="step-circle mx-auto mb-5">2</div>
-                        <h3 class="text-xl font-bold mb-3 text-noir" style="font-family: 'Poppins', sans-serif;">Confirmez sur WhatsApp</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Recevez la confirmation et le tarif en quelques secondes.</p>
+                        <h3 class="text-xl font-bold mb-3 text-noir">Confirmez sur WhatsApp</h3>
+                        <p class="text-sm text-gris leading-relaxed">Recevez la confirmation et le tarif en quelques secondes.</p>
                     </div>
                     <div class="text-center">
                         <div class="step-circle mx-auto mb-5">3</div>
-                        <h3 class="text-xl font-bold mb-3 text-noir" style="font-family: 'Poppins', sans-serif;">Votre taxi arrive</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Le chauffeur vous attend à l'heure et au lieu convenus.</p>
+                        <h3 class="text-xl font-bold mb-3 text-noir">Votre taxi arrive</h3>
+                        <p class="text-sm text-gris leading-relaxed">Le chauffeur vous attend à l'heure et au lieu convenus.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Témoignages -->
-            <div class="py-20 px-5 bg-gray-50">
+            <div class="py-20 px-5 bg-blancCasse">
                 <div class="max-w-5xl mx-auto">
                     <div class="text-center mb-14">
                         <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Ce que disent nos clients</h2>
-                        <p class="text-gray-500 text-base mt-8">Des milliers de clients satisfaits à Kolwezi</p>
+                        <p class="text-gris text-base mt-8">Des milliers de clients satisfaits à Kolwezi</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="testimonial-card">
-                            <div class="flex text-jaune mb-4">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="text-sm text-gray-700 leading-relaxed mb-5 italic">"Service impeccable ! Le chauffeur était à l'heure et très professionnel. Je recommande vivement."</p>
-                            <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-full bg-jaune flex items-center justify-center text-noir font-bold">MK</div>
-                                <div>
-                                    <p class="text-sm font-bold text-noir">Marie K.</p>
-                                    <p class="text-xs text-gray-500">Cliente régulière</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="flex text-jaune mb-4">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="text-sm text-gray-700 leading-relaxed mb-5 italic">"J'utilise leurs services chaque semaine. Toujours fiable, ponctuel et confortable."</p>
-                            <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-full bg-jaune flex items-center justify-center text-noir font-bold">JD</div>
-                                <div>
-                                    <p class="text-sm font-bold text-noir">Jean D.</p>
-                                    <p class="text-xs text-gray-500">Homme d'affaires</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="flex text-jaune mb-4">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="text-sm text-gray-700 leading-relaxed mb-5 italic">"Transfert aéroport parfait, véhicule propre et confortable. Le paiement via WhatsApp est très pratique."</p>
-                            <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 rounded-full bg-jaune flex items-center justify-center text-noir font-bold">SN</div>
-                                <div>
-                                    <p class="text-sm font-bold text-noir">Sarah N.</p>
-                                    <p class="text-xs text-gray-500">Voyageuse</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="temoignagesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="loader"></div>
                     </div>
                 </div>
             </div>
@@ -730,124 +692,65 @@
         <section id="services" class="section hidden-section p-5 max-w-6xl mx-auto py-16">
             <div class="text-center mb-14">
                 <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Nos Tarifs</h2>
-                <p class="text-gray-500 text-base mt-8">Des prix transparents, sans frais cachés</p>
+                <p class="text-gris text-base mt-8">Des prix transparents, sans frais cachés</p>
             </div>
 
-            <!-- Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                 <div class="card p-6">
                     <div class="flex items-start gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-jaune flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-city text-2xl text-noir"></i>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-city text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold mb-2 text-noir" style="font-family: 'Poppins', sans-serif;">Course Urbaine</h3>
-                            <p class="text-sm text-gray-500 mb-3 leading-relaxed">Déplacements rapides en ville pour vos courses et rendez-vous.</p>
+                            <h3 class="text-lg font-bold mb-2 text-noir">Course Urbaine</h3>
+                            <p class="text-sm text-gris mb-3 leading-relaxed">Déplacements rapides en ville pour vos courses et rendez-vous.</p>
                             <span class="text-noir font-bold text-lg">À partir de 5 000 FC</span>
                         </div>
                     </div>
                 </div>
                 <div class="card p-6">
                     <div class="flex items-start gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-jaune flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-plane-departure text-2xl text-noir"></i>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-plane-departure text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold mb-2 text-noir" style="font-family: 'Poppins', sans-serif;">Transfert Aéroport</h3>
-                            <p class="text-sm text-gray-500 mb-3 leading-relaxed">Transferts ponctuels depuis ou vers l'Aéroport de Kolwezi.</p>
+                            <h3 class="text-lg font-bold mb-2 text-noir">Transfert Aéroport</h3>
+                            <p class="text-sm text-gris mb-3 leading-relaxed">Transferts ponctuels depuis ou vers l'Aéroport de Kolwezi.</p>
                             <span class="text-noir font-bold text-lg">À partir de 15 000 FC</span>
                         </div>
                     </div>
                 </div>
                 <div class="card p-6">
                     <div class="flex items-start gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-jaune flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-road text-2xl text-noir"></i>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-road text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold mb-2 text-noir" style="font-family: 'Poppins', sans-serif;">Voyage Interurbain</h3>
-                            <p class="text-sm text-gray-500 mb-3 leading-relaxed">Voyages longue distance vers Likasi, Lubumbashi et environs.</p>
+                            <h3 class="text-lg font-bold mb-2 text-noir">Voyage Interurbain</h3>
+                            <p class="text-sm text-gris mb-3 leading-relaxed">Voyages longue distance vers Likasi, Lubumbashi et environs.</p>
                             <span class="text-noir font-bold text-lg">Sur devis</span>
                         </div>
                     </div>
                 </div>
                 <div class="card p-6">
                     <div class="flex items-start gap-4">
-                        <div class="w-14 h-14 rounded-xl bg-jaune flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-car-side text-2xl text-noir"></i>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-car-side text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold mb-2 text-noir" style="font-family: 'Poppins', sans-serif;">Location VIP</h3>
-                            <p class="text-sm text-gray-500 mb-3 leading-relaxed">Véhicule avec chauffeur privé à disposition pour la journée.</p>
+                            <h3 class="text-lg font-bold mb-2 text-noir">Location VIP</h3>
+                            <p class="text-sm text-gris mb-3 leading-relaxed">Véhicule avec chauffeur privé à disposition pour la journée.</p>
                             <span class="text-noir font-bold text-lg">À partir de 50 000 FC</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Grille Tarifaire -->
             <div class="text-center mb-10">
-                <h3 class="text-2xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">Nos Formules</h3>
+                <h3 class="text-2xl font-black text-noir">Nos Formules</h3>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Standard -->
-                <div class="pricing-card card p-8">
-                    <div class="text-center mb-6">
-                        <h4 class="text-xl font-bold text-noir mb-2" style="font-family: 'Poppins', sans-serif;">Standard</h4>
-                        <p class="text-sm text-gray-500">Pour les trajets quotidiens</p>
-                    </div>
-                    <div class="text-center mb-6">
-                        <span class="text-4xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">5 000</span>
-                        <span class="text-sm text-gray-500"> FC / course</span>
-                    </div>
-                    <ul class="space-y-3 text-sm text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Course urbaine</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Véhicule climatisé</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Chauffeur professionnel</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Disponible 24/7</li>
-                    </ul>
-                    <button onclick="showSection('reserver', null)" class="btn-noir w-full py-3.5 text-sm">Réserver</button>
-                </div>
-
-                <!-- VIP (Featured) -->
-                <div class="pricing-card featured card p-8 relative">
-                    <div class="absolute top-4 right-4 badge-jaune">POPULAIRE</div>
-                    <div class="text-center mb-6">
-                        <h4 class="text-xl font-bold text-noir mb-2" style="font-family: 'Poppins', sans-serif;">VIP</h4>
-                        <p class="text-sm text-gray-500">Pour les déplacements premium</p>
-                    </div>
-                    <div class="text-center mb-6">
-                        <span class="text-4xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">15 000</span>
-                        <span class="text-sm text-gray-500"> FC / course</span>
-                    </div>
-                    <ul class="space-y-3 text-sm text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Transfert aéroport</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Véhicule haut de gamme</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Chauffeur en tenue</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Eau fraîche à bord</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Suivi de vol</li>
-                    </ul>
-                    <button onclick="showSection('reserver', null)" class="btn-jaune w-full py-3.5 text-sm">Réserver</button>
-                </div>
-
-                <!-- Journée -->
-                <div class="pricing-card card p-8">
-                    <div class="text-center mb-6">
-                        <h4 class="text-xl font-bold text-noir mb-2" style="font-family: 'Poppins', sans-serif;">Journée</h4>
-                        <p class="text-sm text-gray-500">Véhicule à disposition</p>
-                    </div>
-                    <div class="text-center mb-6">
-                        <span class="text-4xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">50 000</span>
-                        <span class="text-sm text-gray-500"> FC / jour</span>
-                    </div>
-                    <ul class="space-y-3 text-sm text-gray-600 mb-8">
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> 8 heures de service</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Kilométrage illimité</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Chauffeur dédié</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-jaune"></i> Idéal événements</li>
-                    </ul>
-                    <button onclick="showSection('reserver', null)" class="btn-noir w-full py-3.5 text-sm">Réserver</button>
-                </div>
+            <div id="tarifsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="loader"></div>
             </div>
         </section>
 
@@ -855,28 +758,28 @@
         <section id="apropos" class="section hidden-section p-5 max-w-4xl mx-auto py-16">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">À propos</h2>
-                <p class="text-gray-500 text-base mt-8">Votre partenaire de confiance à Kolwezi</p>
+                <p class="text-gris text-base mt-8">Votre partenaire de confiance à Kolwezi</p>
             </div>
             <div class="card p-8 md:p-10">
                 <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop" alt="Transport Taxi" class="w-full h-64 object-cover rounded-xl mb-8">
-                <p class="text-gray-700 text-base leading-relaxed mb-4">
-                    <strong class="text-noir">JM Services Trans</strong> est votre partenaire de confiance pour le transport de personnes à Kolwezi. Nous proposons des véhicules modernes et bien entretenus.
+                <p class="text-noirSoft text-base leading-relaxed mb-4">
+                    <strong class="text-ciel">JM Services Trans</strong> est votre partenaire de confiance pour le transport de personnes à Kolwezi. Nous proposons des véhicules modernes et bien entretenus.
                 </p>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                <p class="text-gris text-sm leading-relaxed mb-6">
                     Notre priorité est d'assurer votre sécurité, votre confort et le respect strict des horaires pour chacun de vos trajets. Que ce soit pour un simple déplacement en ville ou un voyage interurbain, notre équipe de chauffeurs professionnels est à votre disposition 24h/24 et 7j/7.
                 </p>
                 <div class="grid grid-cols-3 gap-4 text-center">
-                    <div class="bg-gray-50 rounded-xl p-5">
-                        <p class="text-3xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">500+</p>
-                        <p class="text-xs text-gray-500 mt-1 font-semibold">Clients satisfaits</p>
+                    <div class="bg-cielSoft rounded-xl p-5">
+                        <p class="text-3xl font-black text-noir">500+</p>
+                        <p class="text-xs text-gris mt-1 font-semibold">Clients satisfaits</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-5">
-                        <p class="text-3xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">24/7</p>
-                        <p class="text-xs text-gray-500 mt-1 font-semibold">Disponibilité</p>
+                    <div class="bg-cielSoft rounded-xl p-5">
+                        <p class="text-3xl font-black text-noir">24/7</p>
+                        <p class="text-xs text-gris mt-1 font-semibold">Disponibilité</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-5">
-                        <p class="text-3xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">100%</p>
-                        <p class="text-xs text-gray-500 mt-1 font-semibold">Sécurité</p>
+                    <div class="bg-cielSoft rounded-xl p-5">
+                        <p class="text-3xl font-black text-noir">100%</p>
+                        <p class="text-xs text-gris mt-1 font-semibold">Sécurité</p>
                     </div>
                 </div>
             </div>
@@ -886,283 +789,43 @@
         <section id="chauffeurs" class="section hidden-section p-5 max-w-6xl mx-auto py-16">
             <div class="text-center mb-14">
                 <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Nos Chauffeurs</h2>
-                <p class="text-gray-500 text-base mt-8">Rencontrez notre équipe de chauffeurs professionnels disponibles 24h/24</p>
+                <p class="text-gris text-base mt-8">Rencontrez notre équipe de chauffeurs professionnels disponibles 24h/24</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- ===== Chauffeur 1 ===== -->
-                <div class="driver-card">
-                    <div class="driver-photo-wrapper">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop"
-                             alt="Jean Mwamba"
-                             class="driver-photo"
-                             onerror="this.src='https://ui-avatars.com/api/?name=Jean+Mwamba&background=FFD100&color=1A1A1A&size=200'">
-                        <span class="driver-status" title="En ligne"></span>
-                    </div>
-                    <h3 class="driver-name">Jean Mwamba</h3>
-                    <p class="driver-role">Chauffeur Principal</p>
-                    <div class="driver-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+243990840088">+243 990 840 088</a>
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Kolwezi Centre
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-car"></i>
-                        Toyota Innova • VIP
-                    </div>
-                    <div class="driver-rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <span class="text-gray-500 ml-1">(4.9)</span>
-                    </div>
-                    <div class="driver-actions">
-                        <a href="tel:+243990840088" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
-                        <a href="https://wa.me/243990840088?text=Bonjour%20Jean%2C%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- ===== Chauffeur 2 ===== -->
-                <div class="driver-card">
-                    <div class="driver-photo-wrapper">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop"
-                             alt="Patrick Ilunga"
-                             class="driver-photo"
-                             onerror="this.src='https://ui-avatars.com/api/?name=Patrick+Ilunga&background=FFD100&color=1A1A1A&size=200'">
-                        <span class="driver-status" title="En ligne"></span>
-                    </div>
-                    <h3 class="driver-name">Patrick Ilunga</h3>
-                    <p class="driver-role">Chauffeur Aéroport</p>
-                    <div class="driver-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+243990840088">+243 990 840 088</a>
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Dilala / Aéroport
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-car"></i>
-                        Suzuki Ertiga • Confort
-                    </div>
-                    <div class="driver-rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        <span class="text-gray-500 ml-1">(4.7)</span>
-                    </div>
-                    <div class="driver-actions">
-                        <a href="tel:+243990840088" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
-                        <a href="https://wa.me/243990840088?text=Bonjour%20Patrick%2C%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- ===== Chauffeur 3 ===== -->
-                <div class="driver-card">
-                    <div class="driver-photo-wrapper">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop"
-                             alt="David Kabongo"
-                             class="driver-photo"
-                             onerror="this.src='https://ui-avatars.com/api/?name=David+Kabongo&background=FFD100&color=1A1A1A&size=200'">
-                        <span class="driver-status" title="En ligne"></span>
-                    </div>
-                    <h3 class="driver-name">David Kabongo</h3>
-                    <p class="driver-role">Chauffeur Interurbain</p>
-                    <div class="driver-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+243990840088">+243 990 840 088</a>
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Musonoi / Kanina
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-car"></i>
-                        Swift Dzire • Standard
-                    </div>
-                    <div class="driver-rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <span class="text-gray-500 ml-1">(5.0)</span>
-                    </div>
-                    <div class="driver-actions">
-                        <a href="tel:+243990840088" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
-                        <a href="https://wa.me/243990840088?text=Bonjour%20David%2C%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- ===== Chauffeur 4 (Hors ligne) ===== -->
-                <div class="driver-card">
-                    <div class="driver-photo-wrapper">
-                        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=400&auto=format&fit=crop"
-                             alt="Michel Tshibangu"
-                             class="driver-photo"
-                             onerror="this.src='https://ui-avatars.com/api/?name=Michel+Tshibangu&background=FFD100&color=1A1A1A&size=200'">
-                        <span class="driver-status offline" title="Occupé"></span>
-                    </div>
-                    <h3 class="driver-name">Michel Tshibangu</h3>
-                    <p class="driver-role">Chauffeur VIP</p>
-                    <div class="driver-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+243990840088">+243 990 840 088</a>
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Kolwezi Centre
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-car"></i>
-                        Hyundai Xcent • VIP
-                    </div>
-                    <div class="driver-rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        <span class="text-gray-500 ml-1">(4.8)</span>
-                    </div>
-                    <div class="driver-actions">
-                        <a href="tel:+243990840088" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
-                        <a href="https://wa.me/243990840088?text=Bonjour%20Michel%2C%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- ===== Chauffeur 5 ===== -->
-                <div class="driver-card">
-                    <div class="driver-photo-wrapper">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop"
-                             alt="Eric Mutombo"
-                             class="driver-photo"
-                             onerror="this.src='https://ui-avatars.com/api/?name=Eric+Mutombo&background=FFD100&color=1A1A1A&size=200'">
-                        <span class="driver-status" title="En ligne"></span>
-                    </div>
-                    <h3 class="driver-name">Eric Mutombo</h3>
-                    <p class="driver-role">Chauffeur Journée</p>
-                    <div class="driver-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+243990840088">+243 990 840 088</a>
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Fungurume / Likasi
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-car"></i>
-                        Toyota Innova • Journée
-                    </div>
-                    <div class="driver-rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <span class="text-gray-500 ml-1">(4.9)</span>
-                    </div>
-                    <div class="driver-actions">
-                        <a href="tel:+243990840088" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
-                        <a href="https://wa.me/243990840088?text=Bonjour%20Eric%2C%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- ===== Chauffeur 6 ===== -->
-                <div class="driver-card">
-                    <div class="driver-photo-wrapper">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop"
-                             alt="Joseph Kalala"
-                             class="driver-photo"
-                             onerror="this.src='https://ui-avatars.com/api/?name=Joseph+Kalala&background=FFD100&color=1A1A1A&size=200'">
-                        <span class="driver-status" title="En ligne"></span>
-                    </div>
-                    <h3 class="driver-name">Joseph Kalala</h3>
-                    <p class="driver-role">Chauffeur Nuit</p>
-                    <div class="driver-info">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+243990840088">+243 990 840 088</a>
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Kolwezi / Dilala
-                    </div>
-                    <div class="driver-info">
-                        <i class="fas fa-car"></i>
-                        Swift Dzire • Standard
-                    </div>
-                    <div class="driver-rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        <span class="text-gray-500 ml-1">(4.6)</span>
-                    </div>
-                    <div class="driver-actions">
-                        <a href="tel:+243990840088" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
-                        <a href="https://wa.me/243990840088?text=Bonjour%20Joseph%2C%20je%20souhaite%20r%C3%A9server%20un%20taxi" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-
+            <div id="chauffeursContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="loader"></div>
             </div>
 
-            <!-- Bandeau "Rejoindre l'équipe" -->
             <div class="mt-12 bg-noir rounded-2xl p-8 text-center">
-                <i class="fas fa-user-plus text-3xl text-jaune mb-4"></i>
-                <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Poppins', sans-serif;">Vous êtes chauffeur professionnel ?</h3>
+                <i class="fas fa-user-plus text-3xl text-cielLight mb-4"></i>
+                <h3 class="text-xl font-bold text-white mb-3">Vous êtes chauffeur professionnel ?</h3>
                 <p class="text-gray-400 text-sm mb-6">Rejoignez l'équipe JM Services Trans et développez votre activité à Kolwezi.</p>
                 <a href="https://wa.me/243990840088?text=Bonjour%2C%20je%20souhaite%20rejoindre%20votre%20%C3%A9quipe%20de%20chauffeurs"
                    target="_blank"
-                   class="btn-jaune inline-flex items-center gap-2 px-8 py-3.5 text-sm">
+                   class="btn-ciel inline-flex items-center gap-2 px-8 py-3.5 text-sm">
                     <i class="fab fa-whatsapp"></i> Nous contacter
                 </a>
             </div>
         </section>
 
-        <!-- ========== SECTION ZONES DESSERVIES ========== -->
+        <!-- ========== SECTION ZONES ========== -->
         <section id="localisation" class="section hidden-section p-5 max-w-5xl mx-auto py-16">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Zones Desservies</h2>
-                <p class="text-gray-500 text-base mt-8">Basés à Kolwezi, nous couvrons toute la province du Lualaba</p>
+                <p class="text-gris text-base mt-8">Basés à Kolwezi, nous couvrons toute la province du Lualaba</p>
             </div>
 
-            <!-- Map -->
             <div class="card p-4 mb-8">
                 <div class="rounded-xl overflow-hidden h-80 w-full">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15545.69046585853!2d25.455555!3d-10.716667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1970555d55555555%3A0x5555555555555555!2sKolwezi!5e0!3m2!1sfr!2scd!4v1700000000000!5m2!1sfr!2scd" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
                     </iframe>
                 </div>
             </div>
 
-            <!-- Zones Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Kolwezi Centre</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Dilala</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Musonoi</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Kanina</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Aéroport Kolwezi</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Likasi</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Lubumbashi</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Fungurume</p>
-                </div>
-                <div class="zone-item">
-                    <i class="fas fa-map-marker-alt text-noir text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-noir">Autres zones</p>
-                </div>
+            <div id="zonesContainer" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="loader"></div>
             </div>
         </section>
 
@@ -1170,15 +833,15 @@
         <section id="reserver" class="section hidden-section p-5 max-w-lg mx-auto py-16">
             <div class="card p-8">
                 <div class="text-center mb-6">
-                    <div class="w-16 h-16 rounded-full bg-jaune flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-car text-2xl text-noir"></i>
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-car text-2xl text-white"></i>
                     </div>
-                    <h2 class="text-2xl font-black text-noir" style="font-family: 'Poppins', sans-serif;">Réserver un taxi</h2>
-                    <p class="text-sm text-gray-500 mt-2">Remplissez le formulaire pour commander</p>
+                    <h2 class="text-2xl font-black text-noir">Réserver un taxi</h2>
+                    <p class="text-sm text-gris mt-2">Remplissez le formulaire pour commander</p>
                 </div>
                 <form id="bookingForm" class="space-y-4">
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Type de service</label>
+                        <label class="block text-xs font-bold text-noirSoft mb-1.5">Type de service</label>
                         <select id="serviceType" required>
                             <option value="">Sélectionnez un service...</option>
                             <option value="Local Trip">Course Urbaine</option>
@@ -1188,39 +851,39 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Lieu de prise en charge</label>
+                        <label class="block text-xs font-bold text-noirSoft mb-1.5">Lieu de prise en charge</label>
                         <input type="text" id="pickupLocation" required placeholder="Ex: Hôtel Impala, Kolwezi">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Destination</label>
+                        <label class="block text-xs font-bold text-noirSoft mb-1.5">Destination</label>
                         <input type="text" id="destination" required placeholder="Ex: Aéroport de Kolwezi">
                     </div>
                     <div class="flex items-center gap-2 py-1">
-                        <input type="checkbox" id="immediateDeparture" class="w-4 h-4 accent-jaune rounded cursor-pointer">
-                        <label for="immediateDeparture" class="text-sm text-gray-600 cursor-pointer">Départ immédiat</label>
+                        <input type="checkbox" id="immediateDeparture" class="w-4 h-4 accent-ciel rounded cursor-pointer">
+                        <label for="immediateDeparture" class="text-sm text-gris cursor-pointer">Départ immédiat</label>
                     </div>
                     <div id="dateTimeFields" class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1.5">Date</label>
+                            <label class="block text-xs font-bold text-noirSoft mb-1.5">Date</label>
                             <input type="date" id="tripDate">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1.5">Heure</label>
+                            <label class="block text-xs font-bold text-noirSoft mb-1.5">Heure</label>
                             <input type="time" id="tripTime">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Nom complet</label>
+                        <label class="block text-xs font-bold text-noirSoft mb-1.5">Nom complet</label>
                         <input type="text" id="clientName" required placeholder="Votre nom complet">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Numéro WhatsApp</label>
+                        <label class="block text-xs font-bold text-noirSoft mb-1.5">Numéro WhatsApp</label>
                         <input type="tel" id="clientPhone" required placeholder="+243...">
                     </div>
-                    <button type="submit" class="btn-jaune w-full py-4 text-base flex items-center justify-center gap-2">
+                    <button type="submit" class="btn-ciel w-full py-4 text-base flex items-center justify-center gap-2">
                         <i class="fab fa-whatsapp text-xl"></i> Commander maintenant
                     </button>
-                    <p class="text-xs text-gray-500 text-center">Vous serez redirigé vers WhatsApp pour confirmer.</p>
+                    <p class="text-xs text-gris text-center">Vous serez redirigé vers WhatsApp pour confirmer.</p>
                 </form>
             </div>
         </section>
@@ -1229,14 +892,14 @@
         <section id="contact" class="section hidden-section p-5 max-w-2xl mx-auto py-16">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Contactez-nous</h2>
-                <p class="text-gray-500 text-base mt-8">Nous sommes disponibles 24h/24 et 7j/7</p>
+                <p class="text-gris text-base mt-8">Nous sommes disponibles 24h/24 et 7j/7</p>
             </div>
             <div class="card p-8 text-center">
-                <div class="w-20 h-20 rounded-full bg-jaune flex items-center justify-center mx-auto mb-5">
-                    <i class="fas fa-headset text-3xl text-noir"></i>
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center mx-auto mb-5">
+                    <i class="fas fa-headset text-3xl text-white"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-2 text-noir" style="font-family: 'Poppins', sans-serif;">Besoin d'aide ?</h3>
-                <p class="text-gray-500 text-sm mb-8">Appelez-nous ou discutez avec nous sur WhatsApp</p>
+                <h3 class="text-xl font-bold mb-2 text-noir">Besoin d'aide ?</h3>
+                <p class="text-gris text-sm mb-8">Appelez-nous ou discutez avec nous sur WhatsApp</p>
                 
                 <a href="tel:+243990840088" class="btn-noir block w-full py-4 mb-3 text-sm flex items-center justify-center gap-2">
                     <i class="fas fa-phone"></i> Appeler le +243 990 840 088
@@ -1246,54 +909,60 @@
                 </a>
 
                 <div class="mt-8 pt-6 border-t border-gray-200">
-                    <p class="text-sm text-gray-600 mb-2"><i class="fas fa-map-marker-alt text-jaune mr-2"></i> Kolwezi, Lualaba, RDC</p>
-                    <p class="text-sm text-gray-600"><i class="fas fa-envelope text-jaune mr-2"></i> contact@jmservicestrans.cd</p>
+                    <p class="text-sm text-gris mb-2"><i class="fas fa-map-marker-alt text-ciel mr-2"></i> Kolwezi, Lualaba, RDC</p>
+                    <p class="text-sm text-gris"><i class="fas fa-envelope text-ciel mr-2"></i> contact@jmservicestrans.cd</p>
                 </div>
             </div>
         </section>
 
         <!-- ========== SECTION ADMIN ========== -->
-        <section id="admin" class="section hidden-section p-5 max-w-lg mx-auto py-16">
-            <!-- Login Form -->
-            <div id="adminLogin" class="card p-8">
+        <section id="admin" class="section hidden-section p-5 max-w-4xl mx-auto py-16">
+            <div id="adminLogin" class="card p-8 max-w-lg mx-auto">
                 <div class="text-center mb-6">
                     <div class="w-16 h-16 rounded-full bg-noir flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-lock text-xl text-jaune"></i>
+                        <i class="fas fa-lock text-xl text-cielLight"></i>
                     </div>
-                    <h2 class="text-xl font-bold text-noir" style="font-family: 'Poppins', sans-serif;">Espace Admin</h2>
+                    <h2 class="text-xl font-bold text-noir">Espace Admin</h2>
                 </div>
                 <form id="loginForm" class="space-y-4">
                     <input type="email" id="adminEmail" required placeholder="Email administrateur">
                     <input type="password" id="adminPassword" required placeholder="Mot de passe">
-                    <button type="submit" class="btn-noir w-full py-3.5 text-sm font-bold">Se connecter</button>
+                    <button type="submit" class="btn-ciel w-full py-3.5 text-sm font-bold">Se connecter</button>
                     <p id="loginError" class="text-red-500 text-xs text-center hidden">Identifiants incorrects.</p>
                 </form>
             </div>
 
-            <!-- Dashboard -->
             <div id="adminDashboard" class="hidden-section">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-noir" style="font-family: 'Poppins', sans-serif;"><i class="fas fa-chart-line mr-2 text-jaune"></i>Tableau de bord</h2>
+                    <h2 class="text-xl font-bold text-noir"><i class="fas fa-chart-line mr-2 text-ciel"></i>Tableau de bord</h2>
                     <button onclick="logoutAdmin()" class="text-xs text-red-500 hover:text-red-600 transition font-semibold"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
                     <div class="card p-5 text-center">
-                        <p class="text-3xl font-black text-noir" style="font-family: 'Poppins', sans-serif;" id="statTotal">0</p>
-                        <p class="text-xs text-gray-500 mt-1 font-semibold">Total Courses</p>
+                        <p class="text-3xl font-black text-ciel" id="statTotal">0</p>
+                        <p class="text-xs text-gris mt-1 font-semibold">Total</p>
                     </div>
                     <div class="card p-5 text-center">
-                        <p class="text-3xl font-black text-noir" style="font-family: 'Poppins', sans-serif;" id="statToday">0</p>
-                        <p class="text-xs text-gray-500 mt-1 font-semibold">Aujourd'hui</p>
+                        <p class="text-3xl font-black text-ciel" id="statToday">0</p>
+                        <p class="text-xs text-gris mt-1 font-semibold">Aujourd'hui</p>
+                    </div>
+                    <div class="card p-5 text-center">
+                        <p class="text-3xl font-black text-yellow-500" id="statPending">0</p>
+                        <p class="text-xs text-gris mt-1 font-semibold">En attente</p>
+                    </div>
+                    <div class="card p-5 text-center">
+                        <p class="text-3xl font-black text-green-500" id="statDone">0</p>
+                        <p class="text-xs text-gris mt-1 font-semibold">Terminées</p>
                     </div>
                 </div>
                 
-                <div class="card p-4 mb-4">
-                    <h3 class="text-xs font-bold text-gray-500 mb-3 text-center uppercase tracking-wide">Répartition par service</h3>
+                <div class="card p-4 mb-6">
+                    <h3 class="text-xs font-bold text-gris mb-3 text-center uppercase">Répartition par service</h3>
                     <canvas id="serviceChart" height="180"></canvas>
                 </div>
                 
-                <h3 class="text-sm font-bold text-noir mb-3"><i class="fas fa-list mr-2 text-jaune"></i>Dernières réservations</h3>
+                <h3 class="text-sm font-bold text-noir mb-3"><i class="fas fa-list mr-2 text-ciel"></i>Dernières réservations</h3>
                 <div id="reservationsList" class="space-y-2"></div>
             </div>
         </section>
@@ -1304,25 +973,25 @@
     <div id="chatWidget" class="chat-widget">
         <div class="bg-noir p-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-jaune flex items-center justify-center text-noir font-bold">JM</div>
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center text-white font-bold">JM</div>
                 <div>
-                    <p class="text-white font-bold text-sm" style="font-family: 'Poppins', sans-serif;">JM Services Trans</p>
-                    <p class="text-jaune text-[10px] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> En ligne</p>
+                    <p class="text-white font-bold text-sm">JM Services Trans</p>
+                    <p class="text-cielLight text-[10px] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> En ligne</p>
                 </div>
             </div>
-            <button onclick="toggleChat()" class="text-white hover:text-jaune transition"><i class="fas fa-times"></i></button>
+            <button onclick="toggleChat()" class="text-white hover:text-cielLight transition"><i class="fas fa-times"></i></button>
         </div>
-        <div class="p-4 bg-gray-50" style="height: 280px; overflow-y: auto;">
+        <div class="p-4 bg-blancCasse" style="height: 280px; overflow-y: auto;">
             <div class="flex gap-2 mb-3">
-                <div class="w-8 h-8 rounded-full bg-jaune flex items-center justify-center text-noir text-xs font-bold flex-shrink-0">JM</div>
+                <div class="w-8 h-8 rounded-full bg-ciel flex items-center justify-center text-white text-xs font-bold flex-shrink-0">JM</div>
                 <div class="bg-white rounded-xl rounded-tl-none p-3 max-w-[80%] shadow-sm">
-                    <p class="text-xs text-gray-700">Bonjour 👋 Bienvenue chez JM Services Trans. Comment pouvons-nous vous aider ?</p>
+                    <p class="text-xs text-noirSoft">Bonjour 👋 Bienvenue chez JM Services Trans. Comment pouvons-nous vous aider ?</p>
                 </div>
             </div>
             <div class="flex gap-2 mb-3">
-                <div class="w-8 h-8 rounded-full bg-jaune flex items-center justify-center text-noir text-xs font-bold flex-shrink-0">JM</div>
+                <div class="w-8 h-8 rounded-full bg-ciel flex items-center justify-center text-white text-xs font-bold flex-shrink-0">JM</div>
                 <div class="bg-white rounded-xl rounded-tl-none p-3 max-w-[80%] shadow-sm">
-                    <p class="text-xs text-gray-700">Réservez directement via WhatsApp ou appelez-nous au <span class="font-bold">+243 990 840 088</span></p>
+                    <p class="text-xs text-noirSoft">Réservez via WhatsApp ou appelez-nous au <span class="font-bold">+243 990 840 088</span></p>
                 </div>
             </div>
         </div>
@@ -1331,7 +1000,7 @@
                 <a href="https://wa.me/243990840088" target="_blank" class="btn-whatsapp flex-1 py-2.5 text-xs flex items-center justify-center gap-2">
                     <i class="fab fa-whatsapp"></i> Ouvrir WhatsApp
                 </a>
-                <a href="tel:+243990840088" class="btn-jaune px-4 py-2.5 text-xs flex items-center justify-center">
+                <a href="tel:+243990840088" class="btn-ciel px-4 py-2.5 text-xs flex items-center justify-center">
                     <i class="fas fa-phone"></i>
                 </a>
             </div>
@@ -1340,13 +1009,13 @@
 
     <!-- ===== FLOATING BUTTONS ===== -->
     <div class="floating-btns">
-        <button onclick="toggleChat()" class="float-btn bg-noir text-jaune" title="Chat rapide">
+        <button onclick="toggleChat()" class="float-btn bg-noir text-cielLight" title="Chat rapide">
             <i class="fas fa-comments"></i>
         </button>
         <a href="https://wa.me/243990840088" target="_blank" class="float-btn bg-whatsapp text-white" title="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="tel:+243990840088" class="float-btn bg-jaune text-noir" title="Appeler">
+        <a href="tel:+243990840088" class="float-btn bg-ciel text-white" title="Appeler">
             <i class="fas fa-phone"></i>
         </a>
     </div>
@@ -1357,29 +1026,29 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-jaune flex items-center justify-center text-noir font-black text-xl">JM</div>
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center text-white font-black text-xl">JM</div>
                         <div>
-                            <p class="text-white font-black text-lg" style="font-family: 'Poppins', sans-serif;">JM Services Trans</p>
-                            <p class="text-jaune text-[10px] tracking-widest uppercase font-semibold">Taxi Kolwezi • 24/7</p>
+                            <p class="text-white font-black text-lg">JM Services Trans</p>
+                            <p class="text-cielLight text-[10px] tracking-widest uppercase font-semibold">Taxi Kolwezi • 24/7</p>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-md">Votre partenaire de confiance pour tous vos déplacements à Kolwezi et dans le Lualaba. Service rapide, sûr et abordable.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-md">Votre partenaire de confiance pour tous vos déplacements à Kolwezi et dans le Lualaba.</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-jaune mb-4 text-sm uppercase tracking-wide" style="font-family: 'Poppins', sans-serif;">Liens rapides</h4>
+                    <h4 class="font-bold text-cielLight mb-4 text-sm uppercase tracking-wide">Liens rapides</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><button onclick="showSection('accueil', null)" class="hover:text-jaune transition">Accueil</button></li>
-                        <li><button onclick="showSection('services', null)" class="hover:text-jaune transition">Tarifs</button></li>
-                        <li><button onclick="showSection('chauffeurs', null)" class="hover:text-jaune transition">Chauffeurs</button></li>
-                        <li><button onclick="showSection('reserver', null)" class="hover:text-jaune transition">Réserver</button></li>
+                        <li><button onclick="showSection('accueil', null)" class="hover:text-cielLight transition">Accueil</button></li>
+                        <li><button onclick="showSection('services', null)" class="hover:text-cielLight transition">Tarifs</button></li>
+                        <li><button onclick="showSection('chauffeurs', null)" class="hover:text-cielLight transition">Chauffeurs</button></li>
+                        <li><button onclick="showSection('reserver', null)" class="hover:text-cielLight transition">Réserver</button></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-jaune mb-4 text-sm uppercase tracking-wide" style="font-family: 'Poppins', sans-serif;">Contact</h4>
+                    <h4 class="font-bold text-cielLight mb-4 text-sm uppercase tracking-wide">Contact</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><i class="fas fa-phone text-jaune mr-2"></i>+243 990 840 088</li>
-                        <li><i class="fas fa-map-marker-alt text-jaune mr-2"></i>Kolwezi, Lualaba</li>
-                        <li><i class="fas fa-clock text-jaune mr-2"></i>24h/24 - 7j/7</li>
+                        <li><i class="fas fa-phone text-cielLight mr-2"></i>+243 990 840 088</li>
+                        <li><i class="fas fa-map-marker-alt text-cielLight mr-2"></i>Kolwezi, Lualaba</li>
+                        <li><i class="fas fa-clock text-cielLight mr-2"></i>24h/24 - 7j/7</li>
                     </ul>
                 </div>
             </div>
@@ -1391,45 +1060,36 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ===== CONFIGURATION =====
-        const SUPABASE_URL = 'VOTRE_SUPABASE_URL';
-        const SUPABASE_ANON_KEY = 'VOTRE_SUPABASE_ANON_KEY';
+        // ============================================================
+        // CONFIGURATION SUPABASE — JM SERVICES TRANS
+        // ============================================================
+        const SUPABASE_URL = 'https://vgdebezbvciectrbubaw.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_1VT1Y-ZjZkEs5t4Wqs37Xw_S53jbiPI';
         const WHATSAPP_NUMBER = '243990840088';
 
         // Initialisation Supabase
-        let supabase = null;
-        try {
-            if (SUPABASE_URL !== 'VOTRE_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'VOTRE_SUPABASE_ANON_KEY') {
-                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            } else {
-                console.warn('⚠️ Supabase non configuré.');
-            }
-        } catch (e) {
-            console.error('Erreur Supabase:', e);
-        }
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        console.log('✅ Supabase initialisé :', SUPABASE_URL);
 
-        // ===== MENU MOBILE =====
+        // ============================================================
+        // MENU MOBILE
+        // ============================================================
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
         }
 
-        // ===== NAVIGATION =====
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
         function showSection(sectionId, btnElement) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden-section'));
             
             const target = document.getElementById(sectionId);
-            if (target) {
-                target.classList.remove('hidden-section');
-            } else {
-                console.warn('Section introuvable :', sectionId);
-                return;
-            }
+            if (!target) { console.warn('Section introuvable :', sectionId); return; }
+            target.classList.remove('hidden-section');
             
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            
-            document.querySelectorAll(`.nav-btn[data-section="${sectionId}"]`).forEach(btn => {
-                btn.classList.add('active');
-            });
+            document.querySelectorAll(`.nav-btn[data-section="${sectionId}"]`).forEach(btn => btn.classList.add('active'));
             
             if (btnElement && btnElement.classList && btnElement.classList.contains('nav-btn')) {
                 btnElement.classList.add('active');
@@ -1438,20 +1098,23 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ===== CHAT WIDGET =====
+        // ============================================================
+        // CHAT WIDGET
+        // ============================================================
         function toggleChat() {
             document.getElementById('chatWidget').classList.toggle('open');
         }
 
-        // ===== GESTION DES RÉSERVATIONS =====
+        // ============================================================
+        // SOUMISSION DE RÉSERVATION
+        // ============================================================
         async function submitBooking(data, formElement) {
-            if (supabase) {
-                try {
-                    const { error } = await supabase.from('reservations').insert([data]);
-                    if (error) console.error('Erreur Supabase:', error);
-                } catch (e) {
-                    console.error('Erreur:', e);
-                }
+            try {
+                const { error } = await supabase.from('reservations').insert([data]);
+                if (error) console.error('Erreur Supabase:', error);
+                else console.log('✅ Réservation enregistrée');
+            } catch (e) {
+                console.error('Erreur enregistrement:', e);
             }
 
             let message = `*RÉSERVATION TAXI - JM SERVICES TRANS*\n\n`;
@@ -1470,10 +1133,7 @@
 
             const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
-
             if (formElement) formElement.reset();
-            
-            alert('✅ Votre demande a été envoyée !');
         }
 
         // Formulaire rapide
@@ -1493,7 +1153,6 @@
                 client_name: clientName,
                 client_phone: clientPhone
             };
-
             await submitBooking(data, this);
         });
 
@@ -1512,13 +1171,188 @@
                 client_name: document.getElementById('clientName').value,
                 client_phone: document.getElementById('clientPhone').value
             };
-
             await submitBooking(data, this);
         });
 
-        // ===== ADMIN =====
+        // ============================================================
+        // CHARGEMENT DES DONNÉES PUBLIQUES
+        // ============================================================
+        
+        // Chauffeurs
+        async function loadChauffeurs() {
+            const container = document.getElementById('chauffeursContainer');
+            try {
+                const { data, error } = await supabase
+                    .from('chauffeurs')
+                    .select('*')
+                    .eq('actif', true)
+                    .order('ordre', { ascending: true });
+
+                if (error) throw error;
+                if (!data || data.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gris col-span-3">Aucun chauffeur pour le moment.</p>';
+                    return;
+                }
+
+                container.innerHTML = data.map(c => {
+                    const stars = renderStars(c.note || 5);
+                    const statusClass = c.en_ligne ? '' : 'offline';
+                    const statusTitle = c.en_ligne ? 'En ligne' : 'Occupé';
+                    const waMessage = encodeURIComponent(`Bonjour ${c.nom}, je souhaite réserver un taxi`);
+                    
+                    return `
+                    <div class="driver-card">
+                        <div class="driver-photo-wrapper">
+                            <img src="${c.photo_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(c.nom)}" 
+                                 alt="${c.nom}" 
+                                 class="driver-photo"
+                                 onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(c.nom)}&background=38BDF8&color=fff&size=200'">
+                            <span class="driver-status ${statusClass}" title="${statusTitle}"></span>
+                        </div>
+                        <h3 class="driver-name">${c.nom}</h3>
+                        <p class="driver-role">${c.role || 'Chauffeur'}</p>
+                        <div class="driver-info">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:${c.telephone}">${c.telephone}</a>
+                        </div>
+                        <div class="driver-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${c.zone_travail || 'Kolwezi'}
+                        </div>
+                        <div class="driver-info">
+                            <i class="fas fa-car"></i>
+                            ${c.vehicule || 'Véhicule standard'}
+                        </div>
+                        <div class="driver-rating">
+                            ${stars}
+                            <span class="text-gris ml-1">(${c.note || 5.0})</span>
+                        </div>
+                        <div class="driver-actions">
+                            <a href="tel:${c.telephone}" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
+                            <a href="https://wa.me/${c.whatsapp || c.telephone.replace(/\D/g,'')}?text=${waMessage}" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>`;
+                }).join('');
+            } catch (e) {
+                console.error('Erreur chauffeurs:', e);
+                container.innerHTML = '<p class="text-center text-gris col-span-3">Erreur de chargement.</p>';
+            }
+        }
+
+        function renderStars(note) {
+            const full = Math.floor(note);
+            const half = note - full >= 0.5;
+            let html = '';
+            for (let i = 0; i < full; i++) html += '<i class="fas fa-star"></i>';
+            if (half) html += '<i class="fas fa-star-half-alt"></i>';
+            for (let i = full + (half ? 1 : 0); i < 5; i++) html += '<i class="far fa-star"></i>';
+            return html;
+        }
+
+        // Zones
+        async function loadZones() {
+            const container = document.getElementById('zonesContainer');
+            try {
+                const { data, error } = await supabase
+                    .from('zones')
+                    .select('*')
+                    .eq('actif', true)
+                    .order('nom');
+
+                if (error) throw error;
+                if (!data || data.length === 0) return;
+
+                container.innerHTML = data.map(z => `
+                    <div class="zone-item">
+                        <i class="fas fa-map-marker-alt text-ciel text-xl mb-2"></i>
+                        <p class="text-sm font-bold text-noir">${z.nom}</p>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error('Erreur zones:', e);
+            }
+        }
+
+        // Tarifs
+        async function loadTarifs() {
+            const container = document.getElementById('tarifsContainer');
+            try {
+                const { data, error } = await supabase
+                    .from('tarifs')
+                    .select('*')
+                    .eq('actif', true)
+                    .order('ordre');
+
+                if (error) throw error;
+                if (!data || data.length === 0) return;
+
+                container.innerHTML = data.map(t => {
+                    const features = Array.isArray(t.features) ? t.features : [];
+                    const featured = t.populaire ? 'featured' : '';
+                    const badge = t.populaire ? '<div class="absolute top-4 right-4 badge-ciel">POPULAIRE</div>' : '';
+                    const btnClass = t.populaire ? 'btn-ciel' : 'btn-noir';
+
+                    return `
+                    <div class="pricing-card card ${featured} p-8 relative">
+                        ${badge}
+                        <div class="text-center mb-6">
+                            <h4 class="text-xl font-bold text-noir mb-2">${t.nom_formule}</h4>
+                            <p class="text-sm text-gris">${t.description || ''}</p>
+                        </div>
+                        <div class="text-center mb-6">
+                            <span class="text-4xl font-black text-noir">${t.prix.toLocaleString('fr-FR')}</span>
+                            <span class="text-sm text-gris"> ${t.devise}</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-noirSoft mb-8">
+                            ${features.map(f => `<li class="flex items-center gap-3"><i class="fas fa-check-circle text-ciel"></i> ${f}</li>`).join('')}
+                        </ul>
+                        <button onclick="showSection('reserver', null)" class="${btnClass} w-full py-3.5 text-sm">Réserver</button>
+                    </div>`;
+                }).join('');
+            } catch (e) {
+                console.error('Erreur tarifs:', e);
+            }
+        }
+
+        // Témoignages
+        async function loadTemoignages() {
+            const container = document.getElementById('temoignagesContainer');
+            try {
+                const { data, error } = await supabase
+                    .from('temoignages')
+                    .select('*')
+                    .eq('actif', true)
+                    .limit(3);
+
+                if (error) throw error;
+                if (!data || data.length === 0) return;
+
+                container.innerHTML = data.map(t => `
+                    <div class="testimonial-card">
+                        <div class="flex text-yellow-400 mb-4">
+                            ${renderStars(t.note || 5)}
+                        </div>
+                        <p class="text-sm text-noirSoft leading-relaxed mb-5 italic">"${t.message}"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center text-white font-bold">
+                                ${t.client_initiales || t.client_nom.substring(0,2).toUpperCase()}
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-noir">${t.client_nom}</p>
+                                <p class="text-xs text-gris">Client vérifié</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error('Erreur témoignages:', e);
+            }
+        }
+
+        // ============================================================
+        // ADMIN — AUTHENTIFICATION
+        // ============================================================
         async function checkSession() {
-            if (!supabase) return;
             try {
                 const { data: { session } } = await supabase.auth.getSession();
                 if (session) showDashboard();
@@ -1529,10 +1363,6 @@
 
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            if (!supabase) {
-                alert('Supabase non configuré.');
-                return;
-            }
             const email = document.getElementById('adminEmail').value;
             const password = document.getElementById('adminPassword').value;
 
@@ -1545,12 +1375,12 @@
                     showDashboard();
                 }
             } catch (e) {
-                console.error('Erreur:', e);
+                console.error('Erreur connexion:', e);
             }
         });
 
         async function logoutAdmin() {
-            if (supabase) await supabase.auth.signOut();
+            await supabase.auth.signOut();
             document.getElementById('adminLogin').classList.remove('hidden-section');
             document.getElementById('adminDashboard').classList.add('hidden-section');
         }
@@ -1562,21 +1392,25 @@
         }
 
         async function loadDashboardData() {
-            if (!supabase) return;
-            
             try {
                 const { data: reservations, error } = await supabase
                     .from('reservations')
                     .select('*')
                     .order('created_at', { ascending: false });
 
-                if (error) return;
+                if (error) throw error;
                 if (!reservations) return;
 
                 document.getElementById('statTotal').innerText = reservations.length;
                 const today = new Date().toISOString().split('T')[0];
                 document.getElementById('statToday').innerText = reservations.filter(r => 
                     r.created_at && r.created_at.startsWith(today)
+                ).length;
+                document.getElementById('statPending').innerText = reservations.filter(r => 
+                    r.status === 'en_attente' || !r.status
+                ).length;
+                document.getElementById('statDone').innerText = reservations.filter(r => 
+                    r.status === 'termine'
                 ).length;
 
                 updateChart(reservations);
@@ -1585,20 +1419,21 @@
                 listContainer.innerHTML = '';
 
                 if (reservations.length === 0) {
-                    listContainer.innerHTML = '<p class="text-xs text-gray-400 text-center py-4">Aucune réservation.</p>';
+                    listContainer.innerHTML = '<p class="text-xs text-gris text-center py-4">Aucune réservation.</p>';
                     return;
                 }
 
-                reservations.slice(0, 10).forEach(res => {
+                reservations.slice(0, 15).forEach(res => {
                     const div = document.createElement('div');
-                    div.className = 'card p-3 text-xs';
+                    div.className = 'card p-4 text-xs';
                     div.innerHTML = `
-                        <div class="flex justify-between text-noir font-bold mb-1">
-                            <span>${res.client_name || 'Client'}</span>
-                            <span class="text-jaune bg-noir px-2 py-0.5 rounded text-[10px]">${res.service_type || 'Service'}</span>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-noir text-sm">${res.client_name || 'Client'}</span>
+                            <span class="bg-cielSoft text-cielDark px-2 py-0.5 rounded text-[10px] font-bold">${res.service_type || 'Service'}</span>
                         </div>
-                        <div class="text-gray-600"><i class="fas fa-map-marker-alt text-jaune mr-1"></i> ${res.pickup_location || '?'} ➔ ${res.destination || '?'}</div>
-                        <div class="text-gray-500 mt-1"><i class="fas fa-phone mr-1"></i> ${res.client_phone || 'N/A'}</div>
+                        <div class="text-noirSoft mb-1"><i class="fas fa-map-marker-alt text-ciel mr-1"></i> ${res.pickup_location || '?'} ➔ ${res.destination || '?'}</div>
+                        <div class="text-gris mb-1"><i class="fas fa-phone mr-1"></i> ${res.client_phone || 'N/A'}</div>
+                        <div class="text-gris text-[10px]"><i class="fas fa-clock mr-1"></i> ${res.trip_date || ''} ${res.trip_time || ''}</div>
                     `;
                     listContainer.appendChild(div);
                 });
@@ -1607,7 +1442,9 @@
             }
         }
 
-        // ===== GRAPHIQUE =====
+        // ============================================================
+        // GRAPHIQUE
+        // ============================================================
         let chartInstance = null;
         function updateChart(reservations) {
             const counts = {};
@@ -1617,7 +1454,6 @@
             });
 
             if (chartInstance) chartInstance.destroy();
-
             const ctx = document.getElementById('serviceChart').getContext('2d');
             chartInstance = new Chart(ctx, {
                 type: 'doughnut',
@@ -1625,7 +1461,7 @@
                     labels: Object.keys(counts),
                     datasets: [{
                         data: Object.values(counts),
-                        backgroundColor: ['#FFD100', '#1A1A1A', '#F59E0B', '#6B7280', '#10B981'],
+                        backgroundColor: ['#38BDF8', '#0EA5E9', '#7DD3FC', '#0F172A', '#64748B'],
                         borderWidth: 0
                     }]
                 },
@@ -1633,21 +1469,26 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: { 
-                        legend: { 
-                            labels: { 
-                                color: '#4B5563', 
-                                font: { size: 11 } 
-                            } 
-                        } 
+                        legend: { labels: { color: '#64748B', font: { size: 11 } } } 
                     }
                 }
             });
         }
 
-        // ===== INITIALISATION =====
+        // ============================================================
+        // INITIALISATION
+        // ============================================================
         document.addEventListener('DOMContentLoaded', () => {
+            // Charger les données publiques
+            loadChauffeurs();
+            loadZones();
+            loadTarifs();
+            loadTemoignages();
+            
+            // Vérifier session admin
             checkSession();
             
+            // Checkbox départ immédiat
             const immediateCheckbox = document.getElementById('immediateDeparture');
             const dateTimeFields = document.getElementById('dateTimeFields');
             if (immediateCheckbox && dateTimeFields) {
