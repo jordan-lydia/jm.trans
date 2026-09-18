@@ -65,12 +65,15 @@
             border-radius: 12px;
             font-family: 'Poppins', sans-serif;
             box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            cursor: pointer;
+            border: none;
         }
         .btn-ciel:hover { 
             background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);
             transform: translateY(-2px); 
             box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5); 
         }
+        .btn-ciel:active { transform: translateY(0); }
         
         .btn-noir { 
             background-color: #0F172A; 
@@ -79,6 +82,8 @@
             transition: all 0.3s ease; 
             border-radius: 12px;
             font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            border: none;
         }
         .btn-noir:hover { 
             background-color: #1E293B; 
@@ -92,6 +97,8 @@
             font-weight: 700;
             transition: all 0.3s ease;
             border-radius: 12px;
+            cursor: pointer;
+            border: none;
         }
         .btn-whatsapp:hover {
             background-color: #1DA851;
@@ -99,7 +106,7 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
         }
         
-        .hidden-section { display: none; }
+        .hidden-section { display: none !important; }
         
         .nav-btn { 
             position: relative; 
@@ -173,15 +180,6 @@
             transform: translateX(-50%);
         }
 
-        .pricing-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .pricing-card.featured {
-            border: 2px solid #38BDF8;
-            box-shadow: 0 10px 40px rgba(56, 189, 248, 0.2);
-        }
-
         .step-circle {
             width: 56px;
             height: 56px;
@@ -247,9 +245,7 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
         }
-        .driver-card:hover .driver-photo {
-            transform: scale(1.06);
-        }
+        .driver-card:hover .driver-photo { transform: scale(1.06); }
         .driver-status {
             position: absolute;
             bottom: 8px;
@@ -262,11 +258,7 @@
             box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
             animation: pulse-status 2s infinite;
         }
-        .driver-status.offline { 
-            background: #94A3B8; 
-            box-shadow: none; 
-            animation: none; 
-        }
+        .driver-status.offline { background: #94A3B8; box-shadow: none; animation: none; }
         @keyframes pulse-status {
             0%, 100% { box-shadow: 0 0 12px rgba(34, 197, 94, 0.6); }
             50% { box-shadow: 0 0 22px rgba(34, 197, 94, 0.95); }
@@ -319,7 +311,6 @@
             color: #0F172A;
             font-weight: 700;
             text-decoration: none;
-            transition: color 0.2s;
         }
         .driver-info a:hover { color: #38BDF8; }
         .driver-rating {
@@ -330,11 +321,7 @@
             font-size: 0.85rem;
             color: #FBBF24;
         }
-        .driver-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 16px;
-        }
+        .driver-actions { display: flex; gap: 8px; margin-top: 16px; }
         .driver-btn-call {
             flex: 1;
             background-color: #0F172A;
@@ -349,12 +336,8 @@
             justify-content: center;
             gap: 5px;
             transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
         }
-        .driver-btn-call:hover {
-            background-color: #1E293B;
-            transform: translateY(-2px);
-        }
+        .driver-btn-call:hover { background-color: #1E293B; transform: translateY(-2px); }
         .driver-btn-wa {
             flex: 1;
             background-color: #25D366;
@@ -369,12 +352,8 @@
             justify-content: center;
             gap: 5px;
             transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
         }
-        .driver-btn-wa:hover {
-            background-color: #1DA851;
-            transform: translateY(-2px);
-        }
+        .driver-btn-wa:hover { background-color: #1DA851; transform: translateY(-2px); }
 
         .zone-item {
             background: #FFFFFF;
@@ -390,8 +369,7 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
         }
-        .zone-item:hover i,
-        .zone-item:hover p { color: #FFFFFF; }
+        .zone-item:hover i, .zone-item:hover p { color: #FFFFFF; }
 
         .testimonial-card {
             background: #FFFFFF;
@@ -400,10 +378,7 @@
             padding: 24px;
             transition: all 0.3s ease;
         }
-        .testimonial-card:hover {
-            border-color: #38BDF8;
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
-        }
+        .testimonial-card:hover { border-color: #38BDF8; box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1); }
 
         .chat-widget {
             position: fixed;
@@ -422,11 +397,7 @@
             transition: all 0.3s ease;
             background: #ffffff;
         }
-        .chat-widget.open {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
+        .chat-widget.open { transform: translateY(0); opacity: 1; pointer-events: all; }
 
         .floating-btns {
             position: fixed;
@@ -450,35 +421,11 @@
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
+            text-decoration: none;
         }
-        .float-btn:hover {
-            transform: scale(1.1) translateY(-2px);
-        }
+        .float-btn:hover { transform: scale(1.1) translateY(-2px); }
 
-        .top-bar {
-            background: #0F172A;
-            color: #7DD3FC;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-        }
-        .stat-item .number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #FFFFFF;
-            font-family: 'Poppins', sans-serif;
-            line-height: 1;
-        }
-        .stat-item .label {
-            font-size: 0.8rem;
-            color: #0F172A;
-            margin-top: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        .top-bar { background: #0F172A; color: #7DD3FC; }
 
         .loader {
             border: 3px solid #E0F2FE;
@@ -494,14 +441,48 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* ===== MENU MOBILE ===== */
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        #mobileMenu.open {
+            max-height: 500px;
+        }
+
         @media (max-width: 640px) {
             .chat-widget { right: 12px; bottom: 90px; width: calc(100vw - 24px); }
             .floating-btns { bottom: 16px; right: 16px; gap: 10px; }
             .float-btn { width: 50px; height: 50px; font-size: 20px; }
         }
+
+        /* Notification toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: #0F172A;
+            color: #FFFFFF;
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 9999;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 90%;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast.success { background: #25D366; }
+        .toast.error { background: #EF4444; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col relative pb-24 md:pb-0">
+
+    <!-- ===== TOAST NOTIFICATION ===== -->
+    <div id="toast" class="toast"></div>
 
     <!-- ===== TOP BAR ===== -->
     <div class="top-bar text-xs py-2.5 px-4 flex justify-between items-center">
@@ -516,7 +497,7 @@
 
     <!-- ===== HEADER ===== -->
     <header class="px-5 py-4 flex justify-between items-center border-b border-gray-200 bg-white sticky top-0 z-50 shadow-sm">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('accueil', null)">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="goHome()">
             <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center text-white font-black text-xl shadow-lg shadow-ciel/30">JM</div>
             <div>
                 <h1 class="text-xl font-black tracking-tight text-noir">JM Services Trans</h1>
@@ -525,34 +506,34 @@
         </div>
         
         <nav class="hidden lg:flex gap-1 text-sm items-center">
-            <button onclick="showSection('accueil', this)" data-section="accueil" class="nav-btn active">Accueil</button>
-            <button onclick="showSection('services', this)" data-section="services" class="nav-btn">Tarifs</button>
-            <button onclick="showSection('chauffeurs', this)" data-section="chauffeurs" class="nav-btn">Chauffeurs</button>
-            <button onclick="showSection('localisation', this)" data-section="localisation" class="nav-btn">Zones</button>
-            <button onclick="showSection('apropos', this)" data-section="apropos" class="nav-btn">À propos</button>
-            <button onclick="showSection('contact', this)" data-section="contact" class="nav-btn">Contact</button>
-            <button onclick="showSection('admin', this)" data-section="admin" class="nav-btn"><i class="fas fa-lock text-xs mr-1"></i>Admin</button>
-            <button onclick="showSection('reserver', this)" data-section="reserver" class="btn-ciel px-5 py-2.5 text-sm flex items-center gap-2 ml-2">
+            <button type="button" onclick="showSection('accueil', this)" data-section="accueil" class="nav-btn active">Accueil</button>
+            <button type="button" onclick="showSection('services', this)" data-section="services" class="nav-btn">Tarifs</button>
+            <button type="button" onclick="showSection('chauffeurs', this)" data-section="chauffeurs" class="nav-btn">Chauffeurs</button>
+            <button type="button" onclick="showSection('localisation', this)" data-section="localisation" class="nav-btn">Zones</button>
+            <button type="button" onclick="showSection('apropos', this)" data-section="apropos" class="nav-btn">À propos</button>
+            <button type="button" onclick="showSection('contact', this)" data-section="contact" class="nav-btn">Contact</button>
+            <button type="button" onclick="showSection('admin', this)" data-section="admin" class="nav-btn"><i class="fas fa-lock text-xs mr-1"></i>Admin</button>
+            <button type="button" onclick="showSection('reserver', this)" data-section="reserver" class="btn-ciel px-5 py-2.5 text-sm flex items-center gap-2 ml-2">
                 <i class="fas fa-car"></i> Réserver
             </button>
         </nav>
 
-        <button onclick="toggleMobileMenu()" class="lg:hidden text-2xl text-noir">
-            <i class="fas fa-bars"></i>
+        <button type="button" id="menuToggle" onclick="toggleMobileMenu(event)" class="lg:hidden text-2xl text-noir p-2 rounded-lg hover:bg-cielSoft transition">
+            <i class="fas fa-bars" id="menuIcon"></i>
         </button>
     </header>
 
     <!-- ===== MOBILE MENU ===== -->
-    <div id="mobileMenu" class="lg:hidden hidden bg-white border-b border-gray-200 py-3 px-4">
-        <div class="flex flex-col gap-2">
-            <button onclick="showSection('accueil', this); toggleMobileMenu()" data-section="accueil" class="nav-btn active text-left">Accueil</button>
-            <button onclick="showSection('services', this); toggleMobileMenu()" data-section="services" class="nav-btn text-left">Tarifs</button>
-            <button onclick="showSection('chauffeurs', this); toggleMobileMenu()" data-section="chauffeurs" class="nav-btn text-left">Chauffeurs</button>
-            <button onclick="showSection('localisation', this); toggleMobileMenu()" data-section="localisation" class="nav-btn text-left">Zones</button>
-            <button onclick="showSection('apropos', this); toggleMobileMenu()" data-section="apropos" class="nav-btn text-left">À propos</button>
-            <button onclick="showSection('contact', this); toggleMobileMenu()" data-section="contact" class="nav-btn text-left">Contact</button>
-            <button onclick="showSection('admin', this); toggleMobileMenu()" data-section="admin" class="nav-btn text-left">Admin</button>
-            <button onclick="showSection('reserver', this); toggleMobileMenu()" class="btn-ciel py-2.5 mt-2">
+    <div id="mobileMenu" class="lg:hidden bg-white border-b border-gray-200">
+        <div class="py-3 px-4 flex flex-col gap-2">
+            <button type="button" onclick="showSection('accueil', this); closeMobileMenu();" data-section="accueil" class="nav-btn active text-left">Accueil</button>
+            <button type="button" onclick="showSection('services', this); closeMobileMenu();" data-section="services" class="nav-btn text-left">Tarifs</button>
+            <button type="button" onclick="showSection('chauffeurs', this); closeMobileMenu();" data-section="chauffeurs" class="nav-btn text-left">Chauffeurs</button>
+            <button type="button" onclick="showSection('localisation', this); closeMobileMenu();" data-section="localisation" class="nav-btn text-left">Zones</button>
+            <button type="button" onclick="showSection('apropos', this); closeMobileMenu();" data-section="apropos" class="nav-btn text-left">À propos</button>
+            <button type="button" onclick="showSection('contact', this); closeMobileMenu();" data-section="contact" class="nav-btn text-left">Contact</button>
+            <button type="button" onclick="showSection('admin', this); closeMobileMenu();" data-section="admin" class="nav-btn text-left">Admin</button>
+            <button type="button" onclick="showSection('reserver', this); closeMobileMenu();" class="btn-ciel py-2.5 mt-2">
                 <i class="fas fa-car mr-2"></i> Réserver un taxi
             </button>
         </div>
@@ -579,7 +560,7 @@
                             </p>
                             
                             <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                                <button onclick="showSection('reserver', null)" class="btn-ciel px-8 py-4 text-base flex items-center justify-center gap-2">
+                                <button type="button" onclick="goToReserver()" class="btn-ciel px-8 py-4 text-base flex items-center justify-center gap-2">
                                     <i class="fas fa-car"></i> Réserver maintenant
                                 </button>
                                 <a href="tel:+243990840088" class="bg-white/10 backdrop-blur border border-white/20 text-white font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition flex items-center justify-center gap-2">
@@ -594,11 +575,12 @@
                             </div>
                         </div>
 
+                        <!-- FORMULAIRE RAPIDE -->
                         <div class="card p-6 md:p-8 shadow-2xl">
                             <h3 class="text-xl font-bold text-noir mb-1">Réservez votre taxi</h3>
                             <p class="text-xs text-gris mb-6">Réservation instantanée via WhatsApp</p>
                             
-                            <form id="quickBookingForm" class="space-y-4">
+                            <form id="quickBookingForm" class="space-y-4" onsubmit="return false;">
                                 <div>
                                     <label class="block text-xs font-bold text-noirSoft mb-1.5">Départ</label>
                                     <input type="text" id="quickPickup" required placeholder="Ex: Hôtel Impala">
@@ -617,11 +599,19 @@
                                         <input type="time" id="quickTime">
                                     </div>
                                 </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-noirSoft mb-1.5">Votre nom complet</label>
+                                    <input type="text" id="quickName" required placeholder="Ex: Jean Kabila">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-noirSoft mb-1.5">Votre numéro WhatsApp</label>
+                                    <input type="tel" id="quickPhone" required placeholder="+243 990 000 000">
+                                </div>
                                 <div class="flex items-center gap-2 py-1">
                                     <input type="checkbox" id="quickImmediate" class="w-4 h-4 accent-ciel rounded cursor-pointer">
                                     <label for="quickImmediate" class="text-sm text-gris cursor-pointer">Départ immédiat</label>
                                 </div>
-                                <button type="submit" class="btn-ciel w-full py-4 text-sm flex items-center justify-center gap-2">
+                                <button type="button" onclick="submitQuickBooking()" class="btn-whatsapp w-full py-4 text-sm flex items-center justify-center gap-2">
                                     <i class="fab fa-whatsapp text-lg"></i> Commander via WhatsApp
                                 </button>
                             </form>
@@ -631,23 +621,11 @@
             </div>
 
             <div class="bg-gradient-to-r from-ciel to-cielLight py-8 px-5">
-                <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="stat-item">
-                        <div class="number" style="color: #FFFFFF;">500+</div>
-                        <div class="label" style="color: #FFFFFF;">Clients satisfaits</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="number" style="color: #FFFFFF;">24/7</div>
-                        <div class="label" style="color: #FFFFFF;">Disponibilité</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="number" style="color: #FFFFFF;">15min</div>
-                        <div class="label" style="color: #FFFFFF;">Temps d'attente</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="number" style="color: #FFFFFF;">100%</div>
-                        <div class="label" style="color: #FFFFFF;">Sécurité</div>
-                    </div>
+                <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-white text-center">
+                    <div><div class="text-4xl font-black">500+</div><div class="text-xs font-semibold uppercase mt-1">Clients</div></div>
+                    <div><div class="text-4xl font-black">24/7</div><div class="text-xs font-semibold uppercase mt-1">Disponibilité</div></div>
+                    <div><div class="text-4xl font-black">15min</div><div class="text-xs font-semibold uppercase mt-1">Attente</div></div>
+                    <div><div class="text-4xl font-black">100%</div><div class="text-xs font-semibold uppercase mt-1">Sécurité</div></div>
                 </div>
             </div>
 
@@ -681,14 +659,12 @@
                         <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Ce que disent nos clients</h2>
                         <p class="text-gris text-base mt-8">Des milliers de clients satisfaits à Kolwezi</p>
                     </div>
-                    <div id="temoignagesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="loader"></div>
-                    </div>
+                    <div id="temoignagesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECTION SERVICES & TARIFS ========== -->
+        <!-- ========== SECTION SERVICES ========== -->
         <section id="services" class="section hidden-section p-5 max-w-6xl mx-auto py-16">
             <div class="text-center mb-14">
                 <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Nos Tarifs</h2>
@@ -749,9 +725,7 @@
             <div class="text-center mb-10">
                 <h3 class="text-2xl font-black text-noir">Nos Formules</h3>
             </div>
-            <div id="tarifsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="loader"></div>
-            </div>
+            <div id="tarifsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </section>
 
         <!-- ========== SECTION À PROPOS ========== -->
@@ -789,20 +763,16 @@
         <section id="chauffeurs" class="section hidden-section p-5 max-w-6xl mx-auto py-16">
             <div class="text-center mb-14">
                 <h2 class="text-3xl md:text-4xl font-black mb-3 text-noir section-title center">Nos Chauffeurs</h2>
-                <p class="text-gris text-base mt-8">Rencontrez notre équipe de chauffeurs professionnels disponibles 24h/24</p>
+                <p class="text-gris text-base mt-8">Rencontrez notre équipe de chauffeurs professionnels</p>
             </div>
 
-            <div id="chauffeursContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="loader"></div>
-            </div>
+            <div id="chauffeursContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
             <div class="mt-12 bg-noir rounded-2xl p-8 text-center">
                 <i class="fas fa-user-plus text-3xl text-cielLight mb-4"></i>
                 <h3 class="text-xl font-bold text-white mb-3">Vous êtes chauffeur professionnel ?</h3>
-                <p class="text-gray-400 text-sm mb-6">Rejoignez l'équipe JM Services Trans et développez votre activité à Kolwezi.</p>
-                <a href="https://wa.me/243990840088?text=Bonjour%2C%20je%20souhaite%20rejoindre%20votre%20%C3%A9quipe%20de%20chauffeurs"
-                   target="_blank"
-                   class="btn-ciel inline-flex items-center gap-2 px-8 py-3.5 text-sm">
+                <p class="text-gray-400 text-sm mb-6">Rejoignez l'équipe JM Services Trans.</p>
+                <a href="https://wa.me/243990840088?text=Bonjour%2C%20je%20souhaite%20rejoindre%20votre%20%C3%A9quipe" target="_blank" class="btn-ciel inline-flex items-center gap-2 px-8 py-3.5 text-sm">
                     <i class="fab fa-whatsapp"></i> Nous contacter
                 </a>
             </div>
@@ -817,16 +787,11 @@
 
             <div class="card p-4 mb-8">
                 <div class="rounded-xl overflow-hidden h-80 w-full">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15545.69046585853!2d25.455555!3d-10.716667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1970555d55555555%3A0x5555555555555555!2sKolwezi!5e0!3m2!1sfr!2scd!4v1700000000000!5m2!1sfr!2scd" 
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15545.69046585853!2d25.455555!3d-10.716667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1970555d55555555%3A0x5555555555555555!2sKolwezi!5e0!3m2!1sfr!2scd!4v1700000000000!5m2!1sfr!2scd" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
 
-            <div id="zonesContainer" class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="loader"></div>
-            </div>
+            <div id="zonesContainer" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
         </section>
 
         <!-- ========== SECTION RÉSERVER ========== -->
@@ -839,7 +804,7 @@
                     <h2 class="text-2xl font-black text-noir">Réserver un taxi</h2>
                     <p class="text-sm text-gris mt-2">Remplissez le formulaire pour commander</p>
                 </div>
-                <form id="bookingForm" class="space-y-4">
+                <form id="bookingForm" class="space-y-4" onsubmit="return false;">
                     <div>
                         <label class="block text-xs font-bold text-noirSoft mb-1.5">Type de service</label>
                         <select id="serviceType" required>
@@ -880,7 +845,7 @@
                         <label class="block text-xs font-bold text-noirSoft mb-1.5">Numéro WhatsApp</label>
                         <input type="tel" id="clientPhone" required placeholder="+243...">
                     </div>
-                    <button type="submit" class="btn-ciel w-full py-4 text-base flex items-center justify-center gap-2">
+                    <button type="button" onclick="submitFullBooking()" class="btn-whatsapp w-full py-4 text-base flex items-center justify-center gap-2">
                         <i class="fab fa-whatsapp text-xl"></i> Commander maintenant
                     </button>
                     <p class="text-xs text-gris text-center">Vous serez redirigé vers WhatsApp pour confirmer.</p>
@@ -916,54 +881,46 @@
         </section>
 
         <!-- ========== SECTION ADMIN ========== -->
-        <section id="admin" class="section hidden-section p-5 max-w-4xl mx-auto py-16">
-            <div id="adminLogin" class="card p-8 max-w-lg mx-auto">
+        <section id="admin" class="section hidden-section p-5 max-w-5xl mx-auto py-16">
+            <div id="adminLogin" class="card p-8 max-w-md mx-auto shadow-xl">
                 <div class="text-center mb-6">
                     <div class="w-16 h-16 rounded-full bg-noir flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-lock text-xl text-cielLight"></i>
                     </div>
-                    <h2 class="text-xl font-bold text-noir">Espace Admin</h2>
+                    <h2 class="text-2xl font-bold text-noir">Espace Administrateur</h2>
+                    <p class="text-xs text-gris mt-2">Accès réservé au personnel autorisé</p>
                 </div>
-                <form id="loginForm" class="space-y-4">
-                    <input type="email" id="adminEmail" required placeholder="Email administrateur">
-                    <input type="password" id="adminPassword" required placeholder="Mot de passe">
-                    <button type="submit" class="btn-ciel w-full py-3.5 text-sm font-bold">Se connecter</button>
-                    <p id="loginError" class="text-red-500 text-xs text-center hidden">Identifiants incorrects.</p>
+                <form id="loginForm" class="space-y-4" onsubmit="return false;">
+                    <input type="email" id="adminEmail" required placeholder="admin@jmservicestrans.cd" autocomplete="username">
+                    <input type="password" id="adminPassword" required placeholder="••••••••" autocomplete="current-password">
+                    <div id="loginError" class="hidden bg-red-50 border border-red-200 text-red-600 text-xs p-3 rounded-lg text-center"></div>
+                    <button type="button" onclick="doLogin()" class="btn-ciel w-full py-3.5 text-sm font-bold">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Se connecter
+                    </button>
                 </form>
             </div>
 
             <div id="adminDashboard" class="hidden-section">
-                <div class="flex justify-between items-center mb-6">
+                <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
                     <h2 class="text-xl font-bold text-noir"><i class="fas fa-chart-line mr-2 text-ciel"></i>Tableau de bord</h2>
-                    <button onclick="logoutAdmin()" class="text-xs text-red-500 hover:text-red-600 transition font-semibold"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+                    <button type="button" onclick="logoutAdmin()" class="bg-red-500 hover:bg-red-600 text-white text-xs px-4 py-2 rounded-lg font-bold">
+                        <i class="fas fa-sign-out-alt mr-1"></i> Déconnexion
+                    </button>
                 </div>
-                
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-                    <div class="card p-5 text-center">
-                        <p class="text-3xl font-black text-ciel" id="statTotal">0</p>
-                        <p class="text-xs text-gris mt-1 font-semibold">Total</p>
-                    </div>
-                    <div class="card p-5 text-center">
-                        <p class="text-3xl font-black text-ciel" id="statToday">0</p>
-                        <p class="text-xs text-gris mt-1 font-semibold">Aujourd'hui</p>
-                    </div>
-                    <div class="card p-5 text-center">
-                        <p class="text-3xl font-black text-yellow-500" id="statPending">0</p>
-                        <p class="text-xs text-gris mt-1 font-semibold">En attente</p>
-                    </div>
-                    <div class="card p-5 text-center">
-                        <p class="text-3xl font-black text-green-500" id="statDone">0</p>
-                        <p class="text-xs text-gris mt-1 font-semibold">Terminées</p>
-                    </div>
+                    <div class="card p-5 text-center"><p class="text-3xl font-black text-ciel" id="statTotal">0</p><p class="text-xs text-gris mt-1 font-semibold">Total</p></div>
+                    <div class="card p-5 text-center"><p class="text-3xl font-black text-green-500" id="statToday">0</p><p class="text-xs text-gris mt-1 font-semibold">Aujourd'hui</p></div>
+                    <div class="card p-5 text-center"><p class="text-3xl font-black text-yellow-500" id="statPending">0</p><p class="text-xs text-gris mt-1 font-semibold">En attente</p></div>
+                    <div class="card p-5 text-center"><p class="text-3xl font-black text-gray-500" id="statDone">0</p><p class="text-xs text-gris mt-1 font-semibold">Terminées</p></div>
                 </div>
-                
-                <div class="card p-4 mb-6">
-                    <h3 class="text-xs font-bold text-gris mb-3 text-center uppercase">Répartition par service</h3>
-                    <canvas id="serviceChart" height="180"></canvas>
+                <div class="card p-6 mb-6">
+                    <h3 class="text-sm font-bold text-noir mb-4">Répartition par service</h3>
+                    <div style="height: 250px;"><canvas id="serviceChart"></canvas></div>
                 </div>
-                
-                <h3 class="text-sm font-bold text-noir mb-3"><i class="fas fa-list mr-2 text-ciel"></i>Dernières réservations</h3>
-                <div id="reservationsList" class="space-y-2"></div>
+                <div class="card p-6">
+                    <h3 class="text-sm font-bold text-noir mb-4"><i class="fas fa-list mr-2 text-ciel"></i>Dernières réservations</h3>
+                    <div id="reservationsList" class="space-y-2"></div>
+                </div>
             </div>
         </section>
 
@@ -979,7 +936,7 @@
                     <p class="text-cielLight text-[10px] flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> En ligne</p>
                 </div>
             </div>
-            <button onclick="toggleChat()" class="text-white hover:text-cielLight transition"><i class="fas fa-times"></i></button>
+            <button type="button" onclick="toggleChat()" class="text-white hover:text-cielLight"><i class="fas fa-times"></i></button>
         </div>
         <div class="p-4 bg-blancCasse" style="height: 280px; overflow-y: auto;">
             <div class="flex gap-2 mb-3">
@@ -1009,7 +966,7 @@
 
     <!-- ===== FLOATING BUTTONS ===== -->
     <div class="floating-btns">
-        <button onclick="toggleChat()" class="float-btn bg-noir text-cielLight" title="Chat rapide">
+        <button type="button" onclick="toggleChat()" class="float-btn bg-noir text-cielLight" title="Chat rapide">
             <i class="fas fa-comments"></i>
         </button>
         <a href="https://wa.me/243990840088" target="_blank" class="float-btn bg-whatsapp text-white" title="WhatsApp">
@@ -1035,16 +992,16 @@
                     <p class="text-gray-400 text-sm leading-relaxed max-w-md">Votre partenaire de confiance pour tous vos déplacements à Kolwezi et dans le Lualaba.</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-cielLight mb-4 text-sm uppercase tracking-wide">Liens rapides</h4>
+                    <h4 class="font-bold text-cielLight mb-4 text-sm uppercase">Liens rapides</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><button onclick="showSection('accueil', null)" class="hover:text-cielLight transition">Accueil</button></li>
-                        <li><button onclick="showSection('services', null)" class="hover:text-cielLight transition">Tarifs</button></li>
-                        <li><button onclick="showSection('chauffeurs', null)" class="hover:text-cielLight transition">Chauffeurs</button></li>
-                        <li><button onclick="showSection('reserver', null)" class="hover:text-cielLight transition">Réserver</button></li>
+                        <li><button type="button" onclick="showSection('accueil', null)" class="hover:text-cielLight">Accueil</button></li>
+                        <li><button type="button" onclick="showSection('services', null)" class="hover:text-cielLight">Tarifs</button></li>
+                        <li><button type="button" onclick="showSection('chauffeurs', null)" class="hover:text-cielLight">Chauffeurs</button></li>
+                        <li><button type="button" onclick="showSection('reserver', null)" class="hover:text-cielLight">Réserver</button></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-cielLight mb-4 text-sm uppercase tracking-wide">Contact</h4>
+                    <h4 class="font-bold text-cielLight mb-4 text-sm uppercase">Contact</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><i class="fas fa-phone text-cielLight mr-2"></i>+243 990 840 088</li>
                         <li><i class="fas fa-map-marker-alt text-cielLight mr-2"></i>Kolwezi, Lualaba</li>
@@ -1061,41 +1018,94 @@
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
-        // CONFIGURATION SUPABASE — JM SERVICES TRANS
+        // CONFIGURATION
         // ============================================================
         const SUPABASE_URL = 'https://vgdebezbvciectrbubaw.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_1VT1Y-ZjZkEs5t4Wqs37Xw_S53jbiPI';
         const WHATSAPP_NUMBER = '243990840088';
 
-        // Initialisation Supabase
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        console.log('✅ Supabase initialisé :', SUPABASE_URL);
+        let supabaseClient = null;
+        try {
+            supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            console.log('✅ Supabase connecté');
+        } catch (e) {
+            console.error('❌ Erreur Supabase:', e);
+        }
+
+        // ============================================================
+        // NOTIFICATION TOAST
+        // ============================================================
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show ' + type;
+            setTimeout(() => {
+                toast.className = 'toast';
+            }, 3500);
+        }
 
         // ============================================================
         // MENU MOBILE
         // ============================================================
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+        function toggleMobileMenu(e) {
+            if (e) e.preventDefault();
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            const isOpen = menu.classList.contains('open');
+            
+            if (isOpen) {
+                menu.classList.remove('open');
+                icon.className = 'fas fa-bars';
+            } else {
+                menu.classList.add('open');
+                icon.className = 'fas fa-times';
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.remove('open');
+            icon.className = 'fas fa-bars';
         }
 
         // ============================================================
         // NAVIGATION
         // ============================================================
         function showSection(sectionId, btnElement) {
-            document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden-section'));
+            // Cacher toutes les sections
+            document.querySelectorAll('.section').forEach(sec => {
+                sec.classList.add('hidden-section');
+            });
             
+            // Afficher la section cible
             const target = document.getElementById(sectionId);
-            if (!target) { console.warn('Section introuvable :', sectionId); return; }
+            if (!target) {
+                console.warn('⚠️ Section introuvable:', sectionId);
+                showToast('Section introuvable', 'error');
+                return;
+            }
             target.classList.remove('hidden-section');
             
+            // Mettre à jour les boutons actifs
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll(`.nav-btn[data-section="${sectionId}"]`).forEach(btn => btn.classList.add('active'));
             
-            if (btnElement && btnElement.classList && btnElement.classList.contains('nav-btn')) {
-                btnElement.classList.add('active');
-            }
-            
+            // Scroll en haut
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goHome() {
+            showSection('accueil', null);
+        }
+
+        function goToReserver() {
+            showSection('reserver', null);
+            // Focus sur le premier champ après un petit délai
+            setTimeout(() => {
+                const firstInput = document.getElementById('serviceType');
+                if (firstInput) firstInput.focus();
+            }, 500);
         }
 
         // ============================================================
@@ -1106,283 +1116,213 @@
         }
 
         // ============================================================
-        // SOUMISSION DE RÉSERVATION
+        // ENVOI WHATSAPP
         // ============================================================
-        async function submitBooking(data, formElement) {
+        function openWhatsApp(message) {
+            const encoded = encodeURIComponent(message);
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+            console.log('📱 Ouverture WhatsApp:', url);
+            
+            // Essayer window.location d'abord (plus fiable sur mobile)
+            const newWindow = window.open(url, '_blank');
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                // Fallback si popup bloqué
+                window.location.href = url;
+            }
+        }
+
+        async function saveReservation(data) {
+            if (!supabaseClient) return;
             try {
-                const { error } = await supabase.from('reservations').insert([data]);
+                const { error } = await supabaseClient.from('reservations').insert([data]);
                 if (error) console.error('Erreur Supabase:', error);
                 else console.log('✅ Réservation enregistrée');
             } catch (e) {
                 console.error('Erreur enregistrement:', e);
             }
-
-            let message = `*RÉSERVATION TAXI - JM SERVICES TRANS*\n\n`;
-            message += `👤 *Nom:* ${data.client_name}\n`;
-            message += `📞 *Tél:* ${data.client_phone}\n`;
-            message += `🚗 *Service:* ${data.service_type}\n`;
-            message += `📍 *Prise en charge:* ${data.pickup_location}\n`;
-            message += `🏁 *Destination:* ${data.destination}\n`;
-            
-            if (data.immediate_departure) {
-                message += `⏰ *Départ:* Immédiat\n`;
-            } else {
-                message += `📅 *Date:* ${data.trip_date || 'Non spécifiée'}\n`;
-                message += `🕐 *Heure:* ${data.trip_time || 'Non spécifiée'}\n`;
-            }
-
-            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            if (formElement) formElement.reset();
         }
 
-        // Formulaire rapide
-        document.getElementById('quickBookingForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        // ============================================================
+        // FORMULAIRE RAPIDE
+        // ============================================================
+        async function submitQuickBooking() {
+            const pickup = document.getElementById('quickPickup').value.trim();
+            const destination = document.getElementById('quickDestination').value.trim();
+            const name = document.getElementById('quickName').value.trim();
+            const phone = document.getElementById('quickPhone').value.trim();
             const immediate = document.getElementById('quickImmediate').checked;
-            const clientName = prompt("Votre nom complet :") || "Client";
-            const clientPhone = prompt("Votre numéro WhatsApp :") || "À préciser";
+            const date = document.getElementById('quickDate').value;
+            const time = document.getElementById('quickTime').value;
+
+            // Validation
+            if (!pickup || !destination || !name || !phone) {
+                showToast('⚠️ Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+
+            if (!immediate && (!date || !time)) {
+                showToast('⚠️ Veuillez indiquer la date et l\'heure', 'error');
+                return;
+            }
 
             const data = {
                 service_type: 'Réservation Rapide',
-                pickup_location: document.getElementById('quickPickup').value,
-                destination: document.getElementById('quickDestination').value,
-                trip_date: immediate ? 'Immédiat' : document.getElementById('quickDate').value,
-                trip_time: immediate ? '' : document.getElementById('quickTime').value,
+                pickup_location: pickup,
+                destination: destination,
+                trip_date: immediate ? 'Immédiat' : date,
+                trip_time: immediate ? '' : time,
                 immediate_departure: immediate,
-                client_name: clientName,
-                client_phone: clientPhone
+                client_name: name,
+                client_phone: phone,
+                status: 'en_attente'
             };
-            await submitBooking(data, this);
-        });
 
-        // Formulaire complet
-        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+            // Enregistrer dans Supabase
+            await saveReservation(data);
+
+            // Construire le message WhatsApp
+            let message = `*🚕 RÉSERVATION TAXI - JM SERVICES TRANS*\n\n`;
+            message += `👤 *Nom:* ${name}\n`;
+            message += `📞 *Tél:* ${phone}\n`;
+            message += `🚗 *Service:* Réservation Rapide\n`;
+            message += `📍 *Départ:* ${pickup}\n`;
+            message += `🏁 *Destination:* ${destination}\n`;
+            
+            if (immediate) {
+                message += `⏰ *Départ:* Immédiat\n`;
+            } else {
+                message += `📅 *Date:* ${date}\n`;
+                message += `🕐 *Heure:* ${time}\n`;
+            }
+            
+            message += `\n✅ Merci de confirmer ma réservation.`;
+
+            // Ouvrir WhatsApp
+            openWhatsApp(message);
+            
+            showToast('✅ Ouverture de WhatsApp...', 'success');
+            
+            // Réinitialiser le formulaire
+            setTimeout(() => {
+                document.getElementById('quickBookingForm').reset();
+            }, 1000);
+        }
+
+        // ============================================================
+        // FORMULAIRE COMPLET
+        // ============================================================
+        async function submitFullBooking() {
+            const serviceType = document.getElementById('serviceType').value;
+            const pickup = document.getElementById('pickupLocation').value.trim();
+            const destination = document.getElementById('destination').value.trim();
+            const name = document.getElementById('clientName').value.trim();
+            const phone = document.getElementById('clientPhone').value.trim();
             const immediate = document.getElementById('immediateDeparture').checked;
+            const date = document.getElementById('tripDate').value;
+            const time = document.getElementById('tripTime').value;
+
+            // Validation
+            if (!serviceType || !pickup || !destination || !name || !phone) {
+                showToast('⚠️ Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+
+            if (!immediate && (!date || !time)) {
+                showToast('⚠️ Veuillez indiquer la date et l\'heure', 'error');
+                return;
+            }
 
             const data = {
-                service_type: document.getElementById('serviceType').value,
-                pickup_location: document.getElementById('pickupLocation').value,
-                destination: document.getElementById('destination').value,
-                trip_date: immediate ? 'Immédiat' : document.getElementById('tripDate').value,
-                trip_time: immediate ? '' : document.getElementById('tripTime').value,
+                service_type: serviceType,
+                pickup_location: pickup,
+                destination: destination,
+                trip_date: immediate ? 'Immédiat' : date,
+                trip_time: immediate ? '' : time,
                 immediate_departure: immediate,
-                client_name: document.getElementById('clientName').value,
-                client_phone: document.getElementById('clientPhone').value
+                client_name: name,
+                client_phone: phone,
+                status: 'en_attente'
             };
-            await submitBooking(data, this);
-        });
 
-        // ============================================================
-        // CHARGEMENT DES DONNÉES PUBLIQUES
-        // ============================================================
-        
-        // Chauffeurs
-        async function loadChauffeurs() {
-            const container = document.getElementById('chauffeursContainer');
-            try {
-                const { data, error } = await supabase
-                    .from('chauffeurs')
-                    .select('*')
-                    .eq('actif', true)
-                    .order('ordre', { ascending: true });
+            await saveReservation(data);
 
-                if (error) throw error;
-                if (!data || data.length === 0) {
-                    container.innerHTML = '<p class="text-center text-gris col-span-3">Aucun chauffeur pour le moment.</p>';
-                    return;
-                }
-
-                container.innerHTML = data.map(c => {
-                    const stars = renderStars(c.note || 5);
-                    const statusClass = c.en_ligne ? '' : 'offline';
-                    const statusTitle = c.en_ligne ? 'En ligne' : 'Occupé';
-                    const waMessage = encodeURIComponent(`Bonjour ${c.nom}, je souhaite réserver un taxi`);
-                    
-                    return `
-                    <div class="driver-card">
-                        <div class="driver-photo-wrapper">
-                            <img src="${c.photo_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(c.nom)}" 
-                                 alt="${c.nom}" 
-                                 class="driver-photo"
-                                 onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(c.nom)}&background=38BDF8&color=fff&size=200'">
-                            <span class="driver-status ${statusClass}" title="${statusTitle}"></span>
-                        </div>
-                        <h3 class="driver-name">${c.nom}</h3>
-                        <p class="driver-role">${c.role || 'Chauffeur'}</p>
-                        <div class="driver-info">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:${c.telephone}">${c.telephone}</a>
-                        </div>
-                        <div class="driver-info">
-                            <i class="fas fa-map-marker-alt"></i>
-                            ${c.zone_travail || 'Kolwezi'}
-                        </div>
-                        <div class="driver-info">
-                            <i class="fas fa-car"></i>
-                            ${c.vehicule || 'Véhicule standard'}
-                        </div>
-                        <div class="driver-rating">
-                            ${stars}
-                            <span class="text-gris ml-1">(${c.note || 5.0})</span>
-                        </div>
-                        <div class="driver-actions">
-                            <a href="tel:${c.telephone}" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
-                            <a href="https://wa.me/${c.whatsapp || c.telephone.replace(/\D/g,'')}?text=${waMessage}" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        </div>
-                    </div>`;
-                }).join('');
-            } catch (e) {
-                console.error('Erreur chauffeurs:', e);
-                container.innerHTML = '<p class="text-center text-gris col-span-3">Erreur de chargement.</p>';
+            let message = `*🚕 RÉSERVATION TAXI - JM SERVICES TRANS*\n\n`;
+            message += `👤 *Nom:* ${name}\n`;
+            message += `📞 *Tél:* ${phone}\n`;
+            message += `🚗 *Service:* ${serviceType}\n`;
+            message += `📍 *Départ:* ${pickup}\n`;
+            message += `🏁 *Destination:* ${destination}\n`;
+            
+            if (immediate) {
+                message += `⏰ *Départ:* Immédiat\n`;
+            } else {
+                message += `📅 *Date:* ${date}\n`;
+                message += `🕐 *Heure:* ${time}\n`;
             }
-        }
+            
+            message += `\n✅ Merci de confirmer ma réservation.`;
 
-        function renderStars(note) {
-            const full = Math.floor(note);
-            const half = note - full >= 0.5;
-            let html = '';
-            for (let i = 0; i < full; i++) html += '<i class="fas fa-star"></i>';
-            if (half) html += '<i class="fas fa-star-half-alt"></i>';
-            for (let i = full + (half ? 1 : 0); i < 5; i++) html += '<i class="far fa-star"></i>';
-            return html;
-        }
-
-        // Zones
-        async function loadZones() {
-            const container = document.getElementById('zonesContainer');
-            try {
-                const { data, error } = await supabase
-                    .from('zones')
-                    .select('*')
-                    .eq('actif', true)
-                    .order('nom');
-
-                if (error) throw error;
-                if (!data || data.length === 0) return;
-
-                container.innerHTML = data.map(z => `
-                    <div class="zone-item">
-                        <i class="fas fa-map-marker-alt text-ciel text-xl mb-2"></i>
-                        <p class="text-sm font-bold text-noir">${z.nom}</p>
-                    </div>
-                `).join('');
-            } catch (e) {
-                console.error('Erreur zones:', e);
-            }
-        }
-
-        // Tarifs
-        async function loadTarifs() {
-            const container = document.getElementById('tarifsContainer');
-            try {
-                const { data, error } = await supabase
-                    .from('tarifs')
-                    .select('*')
-                    .eq('actif', true)
-                    .order('ordre');
-
-                if (error) throw error;
-                if (!data || data.length === 0) return;
-
-                container.innerHTML = data.map(t => {
-                    const features = Array.isArray(t.features) ? t.features : [];
-                    const featured = t.populaire ? 'featured' : '';
-                    const badge = t.populaire ? '<div class="absolute top-4 right-4 badge-ciel">POPULAIRE</div>' : '';
-                    const btnClass = t.populaire ? 'btn-ciel' : 'btn-noir';
-
-                    return `
-                    <div class="pricing-card card ${featured} p-8 relative">
-                        ${badge}
-                        <div class="text-center mb-6">
-                            <h4 class="text-xl font-bold text-noir mb-2">${t.nom_formule}</h4>
-                            <p class="text-sm text-gris">${t.description || ''}</p>
-                        </div>
-                        <div class="text-center mb-6">
-                            <span class="text-4xl font-black text-noir">${t.prix.toLocaleString('fr-FR')}</span>
-                            <span class="text-sm text-gris"> ${t.devise}</span>
-                        </div>
-                        <ul class="space-y-3 text-sm text-noirSoft mb-8">
-                            ${features.map(f => `<li class="flex items-center gap-3"><i class="fas fa-check-circle text-ciel"></i> ${f}</li>`).join('')}
-                        </ul>
-                        <button onclick="showSection('reserver', null)" class="${btnClass} w-full py-3.5 text-sm">Réserver</button>
-                    </div>`;
-                }).join('');
-            } catch (e) {
-                console.error('Erreur tarifs:', e);
-            }
-        }
-
-        // Témoignages
-        async function loadTemoignages() {
-            const container = document.getElementById('temoignagesContainer');
-            try {
-                const { data, error } = await supabase
-                    .from('temoignages')
-                    .select('*')
-                    .eq('actif', true)
-                    .limit(3);
-
-                if (error) throw error;
-                if (!data || data.length === 0) return;
-
-                container.innerHTML = data.map(t => `
-                    <div class="testimonial-card">
-                        <div class="flex text-yellow-400 mb-4">
-                            ${renderStars(t.note || 5)}
-                        </div>
-                        <p class="text-sm text-noirSoft leading-relaxed mb-5 italic">"${t.message}"</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center text-white font-bold">
-                                ${t.client_initiales || t.client_nom.substring(0,2).toUpperCase()}
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold text-noir">${t.client_nom}</p>
-                                <p class="text-xs text-gris">Client vérifié</p>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (e) {
-                console.error('Erreur témoignages:', e);
-            }
+            openWhatsApp(message);
+            
+            showToast('✅ Ouverture de WhatsApp...', 'success');
+            
+            setTimeout(() => {
+                document.getElementById('bookingForm').reset();
+            }, 1000);
         }
 
         // ============================================================
-        // ADMIN — AUTHENTIFICATION
+        // ADMIN
         // ============================================================
-        async function checkSession() {
-            try {
-                const { data: { session } } = await supabase.auth.getSession();
-                if (session) showDashboard();
-            } catch (e) {
-                console.error('Erreur session:', e);
+        async function doLogin() {
+            if (!supabaseClient) {
+                showToast('❌ Erreur de configuration', 'error');
+                return;
             }
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const email = document.getElementById('adminEmail').value;
+            const email = document.getElementById('adminEmail').value.trim();
             const password = document.getElementById('adminPassword').value;
+            const errorEl = document.getElementById('loginError');
+
+            if (!email || !password) {
+                errorEl.textContent = 'Veuillez remplir tous les champs.';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            errorEl.classList.add('hidden');
 
             try {
-                const { error } = await supabase.auth.signInWithPassword({ email, password });
+                const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
                 if (error) {
-                    document.getElementById('loginError').classList.remove('hidden');
+                    errorEl.textContent = 'Email ou mot de passe incorrect.';
+                    errorEl.classList.remove('hidden');
                 } else {
-                    document.getElementById('loginError').classList.add('hidden');
+                    showToast('✅ Connecté', 'success');
                     showDashboard();
                 }
             } catch (e) {
-                console.error('Erreur connexion:', e);
+                console.error(e);
+                errorEl.textContent = 'Erreur de connexion.';
+                errorEl.classList.remove('hidden');
             }
-        });
+        }
 
         async function logoutAdmin() {
-            await supabase.auth.signOut();
+            if (!supabaseClient) return;
+            await supabaseClient.auth.signOut();
             document.getElementById('adminLogin').classList.remove('hidden-section');
             document.getElementById('adminDashboard').classList.add('hidden-section');
+            showToast('👋 Déconnecté', 'info');
+        }
+
+        async function checkSession() {
+            if (!supabaseClient) return;
+            try {
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (session) showDashboard();
+            } catch (e) {
+                console.error(e);
+            }
         }
 
         async function showDashboard() {
@@ -1392,8 +1332,9 @@
         }
 
         async function loadDashboardData() {
+            if (!supabaseClient) return;
             try {
-                const { data: reservations, error } = await supabase
+                const { data: reservations, error } = await supabaseClient
                     .from('reservations')
                     .select('*')
                     .order('created_at', { ascending: false });
@@ -1401,50 +1342,35 @@
                 if (error) throw error;
                 if (!reservations) return;
 
-                document.getElementById('statTotal').innerText = reservations.length;
                 const today = new Date().toISOString().split('T')[0];
-                document.getElementById('statToday').innerText = reservations.filter(r => 
-                    r.created_at && r.created_at.startsWith(today)
-                ).length;
-                document.getElementById('statPending').innerText = reservations.filter(r => 
-                    r.status === 'en_attente' || !r.status
-                ).length;
-                document.getElementById('statDone').innerText = reservations.filter(r => 
-                    r.status === 'termine'
-                ).length;
+                document.getElementById('statTotal').innerText = reservations.length;
+                document.getElementById('statToday').innerText = reservations.filter(r => r.created_at && r.created_at.startsWith(today)).length;
+                document.getElementById('statPending').innerText = reservations.filter(r => !r.status || r.status === 'en_attente').length;
+                document.getElementById('statDone').innerText = reservations.filter(r => r.status === 'termine').length;
 
                 updateChart(reservations);
 
                 const listContainer = document.getElementById('reservationsList');
-                listContainer.innerHTML = '';
-
                 if (reservations.length === 0) {
                     listContainer.innerHTML = '<p class="text-xs text-gris text-center py-4">Aucune réservation.</p>';
                     return;
                 }
 
-                reservations.slice(0, 15).forEach(res => {
-                    const div = document.createElement('div');
-                    div.className = 'card p-4 text-xs';
-                    div.innerHTML = `
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold text-noir text-sm">${res.client_name || 'Client'}</span>
+                listContainer.innerHTML = reservations.slice(0, 15).map(res => `
+                    <div class="border border-gray-200 rounded-xl p-3 text-xs hover:shadow-md transition">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-bold text-noir">${res.client_name || 'Client'}</span>
                             <span class="bg-cielSoft text-cielDark px-2 py-0.5 rounded text-[10px] font-bold">${res.service_type || 'Service'}</span>
                         </div>
-                        <div class="text-noirSoft mb-1"><i class="fas fa-map-marker-alt text-ciel mr-1"></i> ${res.pickup_location || '?'} ➔ ${res.destination || '?'}</div>
-                        <div class="text-gris mb-1"><i class="fas fa-phone mr-1"></i> ${res.client_phone || 'N/A'}</div>
-                        <div class="text-gris text-[10px]"><i class="fas fa-clock mr-1"></i> ${res.trip_date || ''} ${res.trip_time || ''}</div>
-                    `;
-                    listContainer.appendChild(div);
-                });
+                        <div class="text-noirSoft"><i class="fas fa-map-marker-alt text-ciel mr-1"></i> ${res.pickup_location || '?'} ➔ ${res.destination || '?'}</div>
+                        <div class="text-gris mt-1"><i class="fas fa-phone mr-1"></i> ${res.client_phone || 'N/A'}</div>
+                    </div>
+                `).join('');
             } catch (e) {
                 console.error('Erreur dashboard:', e);
             }
         }
 
-        // ============================================================
-        // GRAPHIQUE
-        // ============================================================
         let chartInstance = null;
         function updateChart(reservations) {
             const counts = {};
@@ -1468,18 +1394,151 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { 
-                        legend: { labels: { color: '#64748B', font: { size: 11 } } } 
-                    }
+                    plugins: { legend: { labels: { color: '#64748B', font: { size: 11 } } } }
                 }
             });
+        }
+
+        // ============================================================
+        // CHARGEMENT DES DONNÉES PUBLIQUES
+        // ============================================================
+        function renderStars(note) {
+            const full = Math.floor(note);
+            const half = note - full >= 0.5;
+            let html = '';
+            for (let i = 0; i < full; i++) html += '<i class="fas fa-star"></i>';
+            if (half) html += '<i class="fas fa-star-half-alt"></i>';
+            for (let i = full + (half ? 1 : 0); i < 5; i++) html += '<i class="far fa-star"></i>';
+            return html;
+        }
+
+        async function loadChauffeurs() {
+            if (!supabaseClient) return;
+            const container = document.getElementById('chauffeursContainer');
+            try {
+                const { data, error } = await supabaseClient.from('chauffeurs').select('*').eq('actif', true).order('ordre');
+                if (error || !data || data.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gris col-span-3 py-8">Aucun chauffeur disponible.</p>';
+                    return;
+                }
+                container.innerHTML = data.map(c => {
+                    const waMsg = encodeURIComponent(`Bonjour ${c.nom}, je souhaite réserver un taxi`);
+                    return `
+                    <div class="driver-card">
+                        <div class="driver-photo-wrapper">
+                            <img src="${c.photo_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(c.nom)}" 
+                                 alt="${c.nom}" class="driver-photo"
+                                 onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(c.nom)}&background=38BDF8&color=fff&size=200'">
+                            <span class="driver-status ${c.en_ligne ? '' : 'offline'}"></span>
+                        </div>
+                        <h3 class="driver-name">${c.nom}</h3>
+                        <p class="driver-role">${c.role || 'Chauffeur'}</p>
+                        <div class="driver-info"><i class="fas fa-phone"></i><a href="tel:${c.telephone}">${c.telephone}</a></div>
+                        <div class="driver-info"><i class="fas fa-map-marker-alt"></i>${c.zone_travail || 'Kolwezi'}</div>
+                        <div class="driver-info"><i class="fas fa-car"></i>${c.vehicule || 'Véhicule standard'}</div>
+                        <div class="driver-rating">${renderStars(c.note || 5)} <span class="text-gris ml-1">(${c.note || 5.0})</span></div>
+                        <div class="driver-actions">
+                            <a href="tel:${c.telephone}" class="driver-btn-call"><i class="fas fa-phone"></i> Appeler</a>
+                            <a href="https://wa.me/${c.whatsapp || c.telephone.replace(/\D/g,'')}?text=${waMsg}" target="_blank" class="driver-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>`;
+                }).join('');
+            } catch (e) {
+                console.error('Erreur chauffeurs:', e);
+            }
+        }
+
+        async function loadZones() {
+            if (!supabaseClient) return;
+            const container = document.getElementById('zonesContainer');
+            try {
+                const { data, error } = await supabaseClient.from('zones').select('*').eq('actif', true).order('nom');
+                if (error || !data || data.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gris col-span-3 py-8">Aucune zone disponible.</p>';
+                    return;
+                }
+                container.innerHTML = data.map(z => `
+                    <div class="zone-item">
+                        <i class="fas fa-map-marker-alt text-ciel text-xl mb-2"></i>
+                        <p class="text-sm font-bold text-noir">${z.nom}</p>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error('Erreur zones:', e);
+            }
+        }
+
+        async function loadTarifs() {
+            if (!supabaseClient) return;
+            const container = document.getElementById('tarifsContainer');
+            try {
+                const { data, error } = await supabaseClient.from('tarifs').select('*').eq('actif', true).order('ordre');
+                if (error || !data || data.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gris col-span-3 py-8">Aucun tarif disponible.</p>';
+                    return;
+                }
+                container.innerHTML = data.map(t => {
+                    const features = Array.isArray(t.features) ? t.features : [];
+                    const featured = t.populaire ? 'featured' : '';
+                    const badge = t.populaire ? '<div class="absolute top-4 right-4 badge-ciel">POPULAIRE</div>' : '';
+                    return `
+                    <div class="pricing-card card ${featured} p-8 relative">
+                        ${badge}
+                        <div class="text-center mb-6">
+                            <h4 class="text-xl font-bold text-noir mb-2">${t.nom_formule}</h4>
+                            <p class="text-sm text-gris">${t.description || ''}</p>
+                        </div>
+                        <div class="text-center mb-6">
+                            <span class="text-4xl font-black text-noir">${t.prix.toLocaleString('fr-FR')}</span>
+                            <span class="text-sm text-gris"> ${t.devise}</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-noirSoft mb-8">
+                            ${features.map(f => `<li class="flex items-center gap-3"><i class="fas fa-check-circle text-ciel"></i> ${f}</li>`).join('')}
+                        </ul>
+                        <button type="button" onclick="goToReserver()" class="${t.populaire ? 'btn-ciel' : 'btn-noir'} w-full py-3.5 text-sm">Réserver</button>
+                    </div>`;
+                }).join('');
+            } catch (e) {
+                console.error('Erreur tarifs:', e);
+            }
+        }
+
+        async function loadTemoignages() {
+            if (!supabaseClient) return;
+            const container = document.getElementById('temoignagesContainer');
+            try {
+                const { data, error } = await supabaseClient.from('temoignages').select('*').eq('actif', true).limit(3);
+                if (error || !data || data.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gris col-span-3 py-8">Aucun témoignage.</p>';
+                    return;
+                }
+                container.innerHTML = data.map(t => `
+                    <div class="testimonial-card">
+                        <div class="flex text-yellow-400 mb-4">${renderStars(t.note || 5)}</div>
+                        <p class="text-sm text-noirSoft leading-relaxed mb-5 italic">"${t.message}"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-ciel to-cielLight flex items-center justify-center text-white font-bold">
+                                ${t.client_initiales || t.client_nom.substring(0,2).toUpperCase()}
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-noir">${t.client_nom}</p>
+                                <p class="text-xs text-gris">Client vérifié</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error('Erreur témoignages:', e);
+            }
         }
 
         // ============================================================
         // INITIALISATION
         // ============================================================
         document.addEventListener('DOMContentLoaded', () => {
-            // Charger les données publiques
+            console.log('🚀 Initialisation...');
+            
+            // Charger les données
             loadChauffeurs();
             loadZones();
             loadTarifs();
@@ -1488,7 +1547,7 @@
             // Vérifier session admin
             checkSession();
             
-            // Checkbox départ immédiat
+            // Checkbox départ immédiat (formulaire complet)
             const immediateCheckbox = document.getElementById('immediateDeparture');
             const dateTimeFields = document.getElementById('dateTimeFields');
             if (immediateCheckbox && dateTimeFields) {
@@ -1498,6 +1557,7 @@
                 });
             }
 
+            // Checkbox départ immédiat (formulaire rapide)
             const quickImmediate = document.getElementById('quickImmediate');
             const quickDate = document.getElementById('quickDate');
             const quickTime = document.getElementById('quickTime');
@@ -1507,6 +1567,8 @@
                     if (quickTime) quickTime.disabled = this.checked;
                 });
             }
+            
+            console.log('✅ Prêt');
         });
     </script>
 </body>
