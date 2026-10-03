@@ -189,11 +189,46 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 // Données de secours : le site reste complet même si Supabase n'est pas encore initialisé
+// J'ai mis les liens exacts de vos images GitHub ici.
 const FB={
  equipe:[
-  {nom:'Le Propriétaire',fonction:'Fondateur & Directeur',bio:'Il a créé JM Services Trans pour offrir à Kolwezi un transport fiable, sûr et ponctuel.',photo_url:'images/proprietaire.jpg'},
-  {nom:'Gille',fonction:'Chauffeur professionnel',bio:'Au volant chaque jour, Gille connaît Kolwezi et veille à votre confort.',photo_url:'images/chauffeur.jpg'}],
- chauffeurs:[{nom:'Gille',role:'Chauffeur',telephone:'+243990840088',whatsapp:'243990840088',zone_travail:'Kolwezi',vehicule:'Berline climatisée',photo_url:'images/chauffeur.jpg',note:5,en_ligne:true}],
+  {
+    nom:'Le Propriétaire',
+    fonction:'Fondateur & Directeur',
+    bio:'Il a créé JM Services Trans pour offrir à Kolwezi un transport fiable, sûr et ponctuel.',
+    photo_url:'propriétaire.jpg' // <-- Lien direct vers votre image
+  },
+  {
+    nom:'Gille',
+    fonction:'Chauffeur professionnel',
+    bio:'Au volant chaque jour, Gille connaît Kolwezi et veille à votre confort.',
+    photo_url:'chauffeur.jpg' // <-- Lien direct vers votre image
+  }
+ ],
+ chauffeurs:[
+  {
+    nom:'Le Propriétaire',
+    role:'Fondateur & Directeur',
+    telephone:'+243990840088',
+    whatsapp:'243990840088',
+    zone_travail:'Kolwezi',
+    vehicule:'Berline climatisée',
+    photo_url:'propriétaire.jpg', // <-- Lien direct vers votre image
+    note:5,
+    en_ligne:true
+  },
+  {
+    nom:'Gille',
+    role:'Chauffeur professionnel',
+    telephone:'+243990840088',
+    whatsapp:'243990840088',
+    zone_travail:'Kolwezi',
+    vehicule:'Berline climatisée',
+    photo_url:'chauffeur.jpg', // <-- Lien direct vers votre image
+    note:5,
+    en_ligne:true
+  }
+ ],
  zones:['Centre-ville','Aéroport de Kolwezi','Manika','Dilala','Musonoie','Likasi','Lubumbashi','Sites miniers'].map(nom=>({nom})),
  tarifs:[{nom_formule:'Standard',description:'Course en ville',prix:5000,devise:'FC',features:['Chauffeur professionnel','Paiement à bord'],populaire:false},
   {nom_formule:'Confort',description:'Le plus demandé',prix:15000,devise:'FC',features:['Transfert aéroport','Bagages inclus'],populaire:true},
