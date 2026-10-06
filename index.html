@@ -101,12 +101,7 @@ input[type=checkbox]{width:18px;height:18px;padding:0}
 
 <section id="tarifs" class="sec hide max-w-6xl mx-auto p-5 py-14">
   <h2 class="text-3xl font-extrabold mb-2">Nos tarifs</h2><p class="text-gris mb-8">Le prix est confirmé avant le départ.</p>
-  <div class="grid md:grid-cols-2 gap-5 mb-12">
-    <div class="card p-6"><i class="fas fa-city text-ciel text-2xl mb-3"></i><h3 class="font-bold text-lg">Course urbaine</h3><p class="text-sm text-gris">Déplacements en ville.</p><b class="text-lg">À partir de 5 000 FC</b></div>
-    <div class="card p-6"><i class="fas fa-plane-departure text-ciel text-2xl mb-3"></i><h3 class="font-bold text-lg">Transfert aéroport</h3><p class="text-sm text-gris">Depuis ou vers l'aéroport de Kolwezi.</p><b class="text-lg">À partir de 15 000 FC</b></div>
-    <div class="card p-6"><i class="fas fa-road text-ciel text-2xl mb-3"></i><h3 class="font-bold text-lg">Voyage interurbain</h3><p class="text-sm text-gris">Likasi, Lubumbashi et environs.</p><b class="text-lg">Sur devis</b></div>
-    <div class="card p-6"><i class="fas fa-car-side text-ciel text-2xl mb-3"></i><h3 class="font-bold text-lg">Location VIP</h3><p class="text-sm text-gris">Chauffeur privé pour la journée.</p><b class="text-lg">À partir de 50 000 FC</b></div>
-  </div>
+  <p class="card p-5 mb-10 text-sm"><i class="fas fa-road text-ciel mr-2"></i><b>Voyage interurbain</b> (Likasi, Lubumbashi et environs) : tarif sur devis, demandez-le par WhatsApp.</p>
   <h3 class="text-2xl font-extrabold mb-6">Nos formules</h3>
   <div id="tarifsBox" class="grid md:grid-cols-3 gap-6"></div>
 </section>
@@ -181,58 +176,23 @@ input[type=checkbox]{width:18px;height:18px;padding:0}
 <a href="https://wa.me/243990840088" target="_blank" rel="noopener" aria-label="WhatsApp" class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white text-2xl flex items-center justify-center shadow-xl"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-const SUPABASE_URL='https://vgdebezbvciectrbubaw.supabase.co';
-const SUPABASE_ANON_KEY='sb_publishable_1VT1Y-ZjZkEs5t4Wqs37Xw_S53jbiPI';
+const SUPABASE_URL='https://baudravtjntovobysfdn.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_sJV5_iOYEIpl4a5MWG-HeA_tAqnuZqk';
 const WA='243990840088';
 let db=null;try{db=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)}catch(e){console.error(e)}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 // Données de secours : le site reste complet même si Supabase n'est pas encore initialisé
-// J'ai mis les liens exacts de vos images GitHub ici.
 const FB={
  equipe:[
-  {
-    nom:'Le Propriétaire',
-    fonction:'Fondateur & Directeur',
-    bio:'Il a créé JM Services Trans pour offrir à Kolwezi un transport fiable, sûr et ponctuel.',
-    photo_url:'proprietaire.jpg' // <-- Lien direct vers votre image
-  },
-  {
-    nom:'James K',
-    fonction:'Chauffeur professionnel',
-    bio:'Au volant chaque jour, Gille connaît Kolwezi et veille à votre confort.',
-    photo_url:'chauffeur.jpg' // <-- Lien direct vers votre image
-  }
- ],
- chauffeurs:[
-  {
-    nom:'Le Propriétaire',
-    role:'Fondateur & Directeur',
-    telephone:'+243990840088',
-    whatsapp:'243990840088',
-    zone_travail:'Kolwezi',
-    vehicule:'Berline climatisée',
-    photo_url:'propriétaire.jpg', // <-- Lien direct vers votre image
-    note:5,
-    en_ligne:true
-  },
-  {
-    nom:'Gille',
-    role:'Chauffeur professionnel',
-    telephone:'+243990840088',
-    whatsapp:'243990840088',
-    zone_travail:'Kolwezi',
-    vehicule:'Berline climatisée',
-    photo_url:'chauffeur.jpg', // <-- Lien direct vers votre image
-    note:5,
-    en_ligne:true
-  }
- ],
+  {nom:'Le Propriétaire',fonction:'Fondateur & Directeur',bio:'Il a créé JM Services Trans pour offrir à Kolwezi un transport fiable, sûr et ponctuel.',photo_url:'images/proprietaire.jpg'},
+  {nom:'Gille',fonction:'Chauffeur professionnel',bio:'Au volant chaque jour, Gille connaît Kolwezi et veille à votre confort.',photo_url:'images/chauffeur.jpg'}],
+ chauffeurs:[{nom:'Gille',role:'Chauffeur',telephone:'+243990840088',whatsapp:'243990840088',zone_travail:'Kolwezi',vehicule:'Berline climatisée',photo_url:'images/chauffeur.jpg',note:5,en_ligne:true}],
  zones:['Centre-ville','Aéroport de Kolwezi','Manika','Dilala','Musonoie','Likasi','Lubumbashi','Sites miniers'].map(nom=>({nom})),
- tarifs:[{nom_formule:'Standard',description:'Course en ville',prix:5000,devise:'FC',features:['Chauffeur professionnel','Paiement à bord'],populaire:false},
-  {nom_formule:'Confort',description:'Le plus demandé',prix:15000,devise:'FC',features:['Transfert aéroport','Bagages inclus'],populaire:true},
-  {nom_formule:'VIP',description:'Chauffeur à disposition',prix:50000,devise:'FC',features:['Journée complète','Véhicule premium'],populaire:false}],
+ tarifs:[{nom_formule:'Standard',description:'Course urbaine',prix:10000,devise:'FC',features:['Chauffeur professionnel','Paiement à bord'],populaire:false},
+  {nom_formule:'Confort',description:'Aéroport & rendez-vous',prix:20000,devise:'FC',features:['Transfert aéroport','Bagages inclus'],populaire:true},
+  {nom_formule:'VIP',description:'Chauffeur privé / jour',prix:130,devise:'USD',features:['Journée complète','Véhicule premium'],populaire:false}],
  temoignages:[{client_nom:'Patrick M.',message:"Chauffeur à l'heure et voiture propre.",note:5},{client_nom:'Sarah K.',message:'Transfert aéroport sans stress, tarif clair.',note:5},{client_nom:'David L.',message:'Confirmation WhatsApp en quelques minutes.',note:4.5}]
 };
 async function fetchTable(t,order){
